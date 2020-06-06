@@ -22,8 +22,8 @@ module.exports = {
     serviceworker: true,
     webextensions: true
   },
-  plugins: [`compat`, `jsx-a11y`, `react`],
-  extends: [`plugin:jsx-a11y/strict`],
+  plugins: [`compat`, `jsx-a11y`, `react`, `ava`],
+  extends: [`plugin:jsx-a11y/strict`, `plugin:ava/recommended`],
   rules: {
     // Possible errors
     'for-direction': `error`,
