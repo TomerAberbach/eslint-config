@@ -1,5 +1,7 @@
 # ESLint Config
 
+[![NPM version](https://img.shields.io/npm/v/@tomer/eslint-config.svg)](https://www.npmjs.com/package/@tomer/eslint-config)
+
 > My [ESLint](https://eslint.org) configuration!
 
 ## Install
