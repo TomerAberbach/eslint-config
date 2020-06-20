@@ -22,7 +22,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "lint:eslint:base": "eslint -c ./index.js --cache --ext mjs,cjs,js,ts --ignore-path .gitignore --ignore-pattern \"**/fixtures/**/*\"",
+    "lint:eslint:base": "eslint -c ./index.js --cache --ext mjs,cjs,js --ignore-path .gitignore",
     "lint:eslint": "pnpm run lint:eslint:base -- --fix .",
     "lint:prettier:base": "prettier --loglevel silent",
     "lint:prettier": "pnpm run lint:prettier:base -- --write .",
