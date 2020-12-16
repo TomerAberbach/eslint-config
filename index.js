@@ -168,7 +168,10 @@ module.exports = {
         caughtErrors: `all`
       }
     ],
-    'no-use-before-define': [`error`, `nofunc`],
+    'no-use-before-define': [
+      `error`,
+      { functions: false, classes: false, variables: false }
+    ],
 
     // Stylistic issues
     camelcase: `error`,
