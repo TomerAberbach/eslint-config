@@ -1,6 +1,6 @@
 {
   "name": "@tomer/eslint-config",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "author": "Tomer Aberbach <tomeraberbach@gmail.com> (https://tomeraberba.ch)",
   "description": "My ESLint configuration!",
   "keywords": [
