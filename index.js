@@ -22,7 +22,7 @@ module.exports = {
     serviceworker: true,
     webextensions: true
   },
-  plugins: [`compat`, `jsx-a11y`, `react`, `ava`],
+  plugins: [`sort-imports-es6-autofix`, `compat`, `jsx-a11y`, `react`, `ava`],
   extends: [`plugin:ava/recommended`],
   rules: {
     // Possible errors
@@ -248,7 +248,7 @@ module.exports = {
     'prefer-spread': `error`,
     'prefer-template': `error`,
     'require-yield': `error`,
-    'sort-imports': `error`,
+    'sort-imports-es6-autofix/sort-imports-es6': `error`,
     'symbol-description': `error`,
 
     // Compat
