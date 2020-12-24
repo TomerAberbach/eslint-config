@@ -18,7 +18,11 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "base.js",
+    "index.js",
+    "react.js",
+    "typescript.js",
+    "typescript-react.js"
   ],
   "main": "index.js",
   "scripts": {
@@ -30,6 +34,9 @@
     "prepublishOnly": "pnpm run lint"
   },
   "prettier": "@tomer/prettier-config",
+  "browserslist": [
+    "current node"
+  ],
   "dependencies": {
     "eslint-plugin-ava": "11.0.0",
     "eslint-plugin-compat": "3.9.0",
@@ -43,6 +50,8 @@
   },
   "devDependencies": {
     "@tomer/prettier-config": "0.0.2",
+    "@typescript-eslint/eslint-plugin": "4.11.0",
+    "@typescript-eslint/parser": "4.11.0",
     "babel-eslint": "10.1.0",
     "eslint": "7.16.0",
     "npm-run-all": "4.1.5",
