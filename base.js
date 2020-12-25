@@ -250,7 +250,6 @@ module.exports = {
     'import/namespace': `error`,
     'import/no-absolute-path': `error`,
     'import/no-dynamic-require': `error`,
-    'import/no-internal-modules': `error`,
     'import/no-self-import': `error`,
     'import/no-useless-path-segments': `error`,
     'import/export': `error`,
