@@ -16,7 +16,7 @@ module.exports = {
     serviceworker: true,
     webextensions: true
   },
-  plugins: [`sort-imports-es6-autofix`, `compat`, `jsx-a11y`, `react`, `ava`],
+  plugins: [`import`, `compat`, `jsx-a11y`, `react`, `ava`],
   extends: `plugin:ava/recommended`,
   rules: {
     // Possible errors
@@ -219,7 +219,6 @@ module.exports = {
     'no-class-assign': `error`,
     'no-const-assign': `error`,
     'no-dupe-class-members': `error`,
-    'no-duplicate-imports': `error`,
     'no-new-symbol': `error`,
     'no-this-before-super': `error`,
     'no-useless-computed-key': `error`,
@@ -242,8 +241,28 @@ module.exports = {
     'prefer-spread': `error`,
     'prefer-template': `error`,
     'require-yield': `error`,
-    'sort-imports-es6-autofix/sort-imports-es6': `error`,
     'symbol-description': `error`,
+
+    // Import
+    'import/no-unresolved': `error`,
+    'import/named': `error`,
+    'import/default': `error`,
+    'import/namespace': `error`,
+    'import/no-absolute-path': `error`,
+    'import/no-dynamic-require': `error`,
+    'import/no-internal-modules': `error`,
+    'import/no-self-import': `error`,
+    'import/no-useless-path-segments': `error`,
+    'import/export': `error`,
+    'import/no-named-as-default': `error`,
+    'import/no-named-as-default-member': `error`,
+    'import/no-deprecated': `error`,
+    'import/no-extraneous-dependencies': `error`,
+    'import/no-mutable-exports': `error`,
+    'import/first': `error`,
+    'import/no-duplicates': `error`,
+    'import/order': `error`,
+    'import/newline-after-import': `error`,
 
     // Compat
     'compat/compat': `error`,
