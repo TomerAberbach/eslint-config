@@ -255,7 +255,10 @@ module.exports = {
     'import/no-named-as-default': `error`,
     'import/no-named-as-default-member': `error`,
     'import/no-deprecated': `error`,
-    'import/no-extraneous-dependencies': `error`,
+    'import/no-extraneous-dependencies': [
+      `error`,
+      { devDependencies: [`**/test/**/*.js`, `**/*.test.js`] }
+    ],
     'import/no-mutable-exports': `error`,
     'import/first': `error`,
     'import/no-duplicates': `error`,
