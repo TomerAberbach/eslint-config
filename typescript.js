@@ -4,7 +4,7 @@ module.exports = {
     project: `tsconfig.json`
   },
   plugins: [`@typescript-eslint`],
-  extends: `./base.js`,
+  extends: `./index.js`,
   rules: Object.fromEntries(
     Object.entries({
       'adjacent-overload-signatures': `error`,
