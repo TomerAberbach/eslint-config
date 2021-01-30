@@ -257,7 +257,7 @@ module.exports = {
     'import/no-deprecated': `error`,
     'import/no-extraneous-dependencies': [
       `error`,
-      { devDependencies: [`**/test/**/*.js`, `**/*.test.js`] }
+      { devDependencies: [`**/test/**/*.js`, `**/*.test.js`, `**/test.js`] }
     ],
     'import/no-mutable-exports': `error`,
     'import/first': `error`,
