@@ -32,4 +32,4 @@ Note that this configuration is intended to be used with [`@tomer/prettier-confi
 
 ## License
 
-[MIT](https://github.com/TomerAberbach/eslint-config/blob/master/license) © [Tomer Aberbach](https://github.com/TomerAberbach)
+[MIT](https://github.com/TomerAberbach/eslint-config/blob/main/license) © [Tomer Aberbach](https://github.com/TomerAberbach)
