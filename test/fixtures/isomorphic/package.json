@@ -1,0 +1,11 @@
+{
+  "engines": {
+    "node": ">= 12"
+  },
+  "browserslist": [
+    "defaults"
+  ],
+  "eslintConfig": {
+    "extends": "../../../index.js"
+  }
+}

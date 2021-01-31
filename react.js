@@ -1,4 +1,3 @@
 module.exports = {
-  extends: `./index.js`,
-  rules: require(`./src/react-rules`)
+  extends: [`./index.js`, `./src/react.js`]
 }

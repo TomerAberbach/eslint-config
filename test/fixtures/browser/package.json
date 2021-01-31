@@ -1,0 +1,8 @@
+{
+  "browserslist": [
+    "defaults"
+  ],
+  "eslintConfig": {
+    "extends": "../../../index.js"
+  }
+}

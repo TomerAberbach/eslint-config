@@ -1,8 +1,22 @@
-# ESLint Config
+<h1 align="center">
+  eslint-config
+</h1>
 
-[![NPM version](https://img.shields.io/npm/v/@tomer/eslint-config.svg)](https://www.npmjs.com/package/@tomer/eslint-config)
+<div align="center">
+  <a href="https://npmjs.org/package/eslint-config">
+    <img src="https://badgen.now.sh/npm/v/eslint-config" alt="version" />
+  </a>
+  <a href="https://github.com/TomerAberbach/eslint-config/actions">
+    <img src="https://github.com/TomerAberbach/eslint-config/workflows/CI/badge.svg" alt="CI" />
+  </a>
+  <a href="https://packagephobia.now.sh/result?p=eslint-config">
+    <img src="https://packagephobia.now.sh/badge?p=eslint-config" alt="install size" />
+  </a>
+</div>
 
-> My [ESLint](https://eslint.org) configuration!
+<div align="center">
+  My ESLint configuration!
+</div>
 
 ## Install
 
@@ -29,6 +43,12 @@ Or extending the configuration in your [`.eslintrc.*`](https://eslint.org/docs/u
 Run `eslint` with [the supported options](https://eslint.org/docs/user-guide/command-line-interface#options).
 
 Note that this configuration is intended to be used with [`@tomer/prettier-config`](https://github.com/TomerAberbach/prettier-config).
+
+## Contributing
+
+Stars are always welcome!
+
+For bugs and feature requests, [please create an issue](https://github.com/TomerAberbach/eslint-config/issues/new).
 
 ## License
 

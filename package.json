@@ -1,7 +1,11 @@
 {
   "name": "@tomer/eslint-config",
   "version": "0.0.18",
-  "author": "Tomer Aberbach <tomeraberbach@gmail.com> (https://tomeraberba.ch)",
+  "author": {
+    "name": "Tomer Aberbach",
+    "email": "tomeraberbach@gmail.com",
+    "url": "https://tomeraberba.ch"
+  },
   "description": "My ESLint configuration!",
   "keywords": [
     "eslint",
@@ -18,39 +22,67 @@
   },
   "license": "MIT",
   "files": [
+    "src",
     "index.js",
     "react.js",
     "typescript.js",
     "typescript-react.js"
   ],
+  "engines": {
+    "node": ">= 12.17"
+  },
   "main": "index.js",
   "scripts": {
-    "lint:prettier:base": "prettier --loglevel silent",
-    "lint:prettier": "pnpm run lint:prettier:base -- --write .",
-    "lint:eslint:base": "eslint -c ./index.js --cache --ignore-path .gitignore",
-    "lint:eslint": "pnpm run lint:eslint:base -- --fix .",
+    "lint:prettier:base": "prettier --loglevel silent --ignore-path .gitignore",
+    "lint:prettier": "run-s \"lint:prettier:base -- --write .\"",
+    "lint:eslint:base": "eslint -c ./index.js --cache --ext \"js,mjs\" --ignore-path .gitignore",
+    "lint:eslint": "run-s \"lint:eslint:base -- --fix .\"",
     "lint": "run-s lint:*",
-    "prepublishOnly": "pnpm run lint"
+    "test": "ava",
+    "coverage": "c8 run-s test"
   },
   "prettier": "@tomer/prettier-config",
-  "browserslist": [
-    "current node"
-  ],
+  "lint-staged": {
+    "*.{js,mjs}": [
+      "run-s \"lint:prettier:base -- --write {@}\" --",
+      "run-s \"lint:eslint:base -- --fix {@}\" --"
+    ],
+    "*.{json,yml,md}": "run-s \"lint:prettier:base -- --write {@}\" --"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
+    "browserslist": "4.16.3",
     "eslint-plugin-ava": "11.0.0",
     "eslint-plugin-compat": "3.9.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsx-a11y": "6.4.1",
-    "eslint-plugin-react": "7.21.5"
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-react": "7.22.0",
+    "read-pkg-up": "7.0.1"
   },
   "peerDependencies": {
     "eslint": "^7.0.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "11.0.0",
+    "@commitlint/config-conventional": "11.0.0",
+    "@tomer/eslint-config": "0.0.18",
     "@tomer/prettier-config": "0.0.2",
-    "@typescript-eslint/eslint-plugin": "4.11.0",
-    "@typescript-eslint/parser": "4.11.0",
-    "eslint": "7.16.0",
+    "ava": "3.15.0",
+    "ava-fast-check": "4.0.1",
+    "c8": "7.4.0",
+    "eslint": "7.19.0",
+    "fast-check": "2.12.0",
+    "husky": "4.3.8",
+    "lint-staged": "10.5.3",
     "npm-run-all": "4.1.5",
     "prettier": "2.2.1"
   }

@@ -1,4 +1,3 @@
 module.exports = {
-  extends: `./typescript.js`,
-  rules: require(`./src/react-rules`)
+  extends: [`./typescript.js`, `./src/react.js`]
 }

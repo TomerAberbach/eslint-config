@@ -1,0 +1,8 @@
+{
+  "engines": {
+    "node": ">= 12"
+  },
+  "eslintConfig": {
+    "extends": "../../../index.js"
+  }
+}
