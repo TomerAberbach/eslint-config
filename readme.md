@@ -9,8 +9,8 @@
   <a href="https://github.com/TomerAberbach/eslint-config/actions">
     <img src="https://github.com/TomerAberbach/eslint-config/workflows/CI/badge.svg" alt="CI" />
   </a>
-  <a href="https://packagephobia.now.sh/result?p=eslint-config">
-    <img src="https://packagephobia.now.sh/badge?p=eslint-config" alt="install size" />
+  <a href="https://bundlephobia.com/result?p=@tomer/eslint-config">
+    <img src="https://badgen.net/bundlephobia/minzip/@tomer/eslint-config" alt="minzip size" />
   </a>
 </div>
 
