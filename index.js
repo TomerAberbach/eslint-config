@@ -242,7 +242,6 @@ module.exports = {
     'require-yield': `error`,
     'symbol-description': `error`,
 
-    'import/no-unresolved': `error`,
     'import/named': `error`,
     'import/default': `error`,
     'import/namespace': `error`,
@@ -254,10 +253,6 @@ module.exports = {
     'import/no-named-as-default': `error`,
     'import/no-named-as-default-member': `error`,
     'import/no-deprecated': `error`,
-    'import/no-extraneous-dependencies': [
-      `error`,
-      { devDependencies: [`**/test/**/*`, `**/*.test.*`, `**/test.*`] }
-    ],
     'import/no-mutable-exports': `error`,
     'import/first': `error`,
     'import/no-duplicates': `error`,
