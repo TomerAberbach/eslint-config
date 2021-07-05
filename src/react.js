@@ -12,7 +12,7 @@ module.exports = {
     'react/jsx-indent': [
       `error`,
       2,
-      { checkAttributes: true, indentLogicalExpressions: true }
+      { checkAttributes: true, indentLogicalExpressions: true },
     ],
     'react/jsx-indent-props': [`error`, 2],
     'react/jsx-no-comment-textnodes': `error`,
@@ -34,8 +34,8 @@ module.exports = {
         arrow: `parens-new-line`,
         condition: `ignore`,
         logical: `ignore`,
-        prop: `ignore`
-      }
+        prop: `ignore`,
+      },
     ],
     'react/jsx-handler-names': `error`,
     'react/jsx-key': [`error`, { checkFragmentShorthand: true }],
@@ -62,7 +62,7 @@ module.exports = {
           `input`,
           `textarea`,
           `tr`,
-          `video`
+          `video`,
         ],
         ignoreRoles: [
           `grid`,
@@ -74,10 +74,10 @@ module.exports = {
           `tablist`,
           `toolbar`,
           `tree`,
-          `treegrid`
+          `treegrid`,
         ],
-        includeRoles: [`alert`, `dialog`]
-      }
+        includeRoles: [`alert`, `dialog`],
+      },
     ],
     'jsx-a11y/heading-has-content': `error`,
     'jsx-a11y/html-has-lang': `error`,
@@ -95,9 +95,9 @@ module.exports = {
           `slider`,
           `spinbutton`,
           `switch`,
-          `textbox`
-        ]
-      }
+          `textbox`,
+        ],
+      },
     ],
     'jsx-a11y/label-has-associated-control': `error`,
     'jsx-a11y/media-has-caption': `error`,
@@ -111,8 +111,8 @@ module.exports = {
       {
         body: [`onError`, `onLoad`],
         iframe: [`onError`, `onLoad`],
-        img: [`onError`, `onLoad`]
-      }
+        img: [`onError`, `onLoad`],
+      },
     ],
     'jsx-a11y/no-noninteractive-element-to-interactive-role': `error`,
     'jsx-a11y/no-noninteractive-tabindex': `error`,
@@ -122,6 +122,6 @@ module.exports = {
     'jsx-a11y/role-has-required-aria-props': `error`,
     'jsx-a11y/role-supports-aria-props': `error`,
     'jsx-a11y/scope': `error`,
-    'jsx-a11y/tabindex-no-positive': `error`
-  }
+    'jsx-a11y/tabindex-no-positive': `error`,
+  },
 }

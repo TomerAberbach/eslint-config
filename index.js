@@ -1,23 +1,46 @@
+const environment = require(`./src/environment.js`)
+
+const getEnv = () => {
+  const isNodeSupported = environment.isNodeSupported()
+  const isBrowserSupported = environment.isBrowserSupported()
+
+  if (isNodeSupported && isBrowserSupported) {
+    return {
+      'shared-node-browser': true,
+    }
+  }
+
+  if (isNodeSupported) {
+    return { node: true }
+  }
+
+  if (isBrowserSupported) {
+    return { browser: true }
+  }
+
+  return {}
+}
+
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: `latest`,
     sourceType: `module`,
     ecmaFeatures: {
       impliedStrict: true,
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   env: {
-    browser: true,
-    node: true,
+    ...getEnv(),
     es2017: true,
     es2020: true,
+    es2021: true,
     worker: true,
     serviceworker: true,
-    webextensions: true
+    webextensions: true,
   },
   plugins: [`import`, `ava`],
-  extends: [`./src/node.js`, `./src/browser.js`, `plugin:ava/recommended`],
+  extends: [`./src/browser.js`, `plugin:ava/recommended`],
   rules: {
     // Possible errors
     'for-direction': `error`,
@@ -46,8 +69,8 @@ module.exports = {
         skipStrings: false,
         skipComments: false,
         skipRegExps: false,
-        skipTemplates: false
-      }
+        skipTemplates: false,
+      },
     ],
     'no-loss-of-precision': `error`,
     'no-misleading-character-class': `error`,
@@ -67,8 +90,8 @@ module.exports = {
       `error`,
       {
         enforceForSwitchCase: true,
-        enforceForIndexOf: true
-      }
+        enforceForIndexOf: true,
+      },
     ],
     'valid-typeof': [`error`, { requireStringLiterals: false }],
 
@@ -77,8 +100,8 @@ module.exports = {
       `error`,
       {
         allowImplicit: false,
-        checkForEach: false
-      }
+        checkForEach: false,
+      },
     ],
     'class-methods-use-this': `error`,
     'consistent-return': [`error`, { treatUndefinedAsUnspecified: false }],
@@ -110,8 +133,8 @@ module.exports = {
       `error`,
       {
         allowLoop: true,
-        allowSwitch: false
-      }
+        allowSwitch: false,
+      },
     ],
     'no-lone-blocks': `error`,
     'no-loop-func': `error`,
@@ -158,12 +181,12 @@ module.exports = {
         vars: `all`,
         args: `after-used`,
         ignoreRestSiblings: true,
-        caughtErrors: `all`
-      }
+        caughtErrors: `all`,
+      },
     ],
     'no-use-before-define': [
       `error`,
-      { functions: false, classes: false, variables: false }
+      { functions: false, classes: false, variables: false },
     ],
 
     // Stylistic issues
@@ -171,7 +194,7 @@ module.exports = {
     'capitalized-comments': [
       `error`,
       `always`,
-      { ignoreConsecutiveComments: true }
+      { ignoreConsecutiveComments: true },
     ],
     'consistent-this': [`error`, `self`],
     'func-names': [`error`, `never`],
@@ -187,13 +210,13 @@ module.exports = {
         allowBlockStart: true,
         allowObjectStart: true,
         allowArrayStart: true,
-        allowClassStart: true
-      }
+        allowClassStart: true,
+      },
     ],
     'lines-between-class-members': [
       `error`,
       `always`,
-      { exceptAfterSingleLine: true }
+      { exceptAfterSingleLine: true },
     ],
     'multiline-comment-style': `error`,
     'new-cap': `error`,
@@ -231,9 +254,9 @@ module.exports = {
       `error`,
       {
         array: false,
-        object: true
+        object: true,
       },
-      { enforceForRenamedProperties: false }
+      { enforceForRenamedProperties: false },
     ],
     'prefer-numeric-literals': `error`,
     'prefer-rest-params': `error`,
@@ -257,6 +280,6 @@ module.exports = {
     'import/first': `error`,
     'import/no-duplicates': `error`,
     'import/order': `error`,
-    'import/newline-after-import': `error`
-  }
+    'import/newline-after-import': `error`,
+  },
 }

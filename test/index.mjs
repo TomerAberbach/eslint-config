@@ -17,7 +17,7 @@ test.serial(`only browser supported config`, async t => {
   const eslint = new ESLint()
 
   const config = await eslint.calculateConfigForFile(
-    fixture(`browser/index.js`)
+    fixture(`browser/index.js`),
   )
   t.log(config)
 
@@ -30,7 +30,7 @@ test.serial(`both node and browser supported`, async t => {
   const eslint = new ESLint()
 
   const config = await eslint.calculateConfigForFile(
-    fixture(`isomorphic/index.js`)
+    fixture(`isomorphic/index.js`),
   )
   t.log(config)
 

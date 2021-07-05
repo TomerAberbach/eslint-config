@@ -1,7 +1,7 @@
 module.exports = {
   parser: require.resolve(`@typescript-eslint/parser`),
   parserOptions: {
-    project: `tsconfig.json`
+    project: `tsconfig.json`,
   },
   plugins: [`@typescript-eslint`],
   extends: `./index.js`,
@@ -23,13 +23,13 @@ module.exports = {
       `error`,
       {
         multiline: {
-          delimiter: `none`
+          delimiter: `none`,
         },
         singleline: {
           delimiter: `comma`,
-          requireLast: false
-        }
-      }
+          requireLast: false,
+        },
+      },
     ],
     '@typescript-eslint/method-signature-style': `error`,
     '@typescript-eslint/no-confusing-non-null-assertion': `error`,
@@ -37,8 +37,8 @@ module.exports = {
       `error`,
       {
         ignoreArrowShorthand: true,
-        ignoreVoidOperator: true
-      }
+        ignoreVoidOperator: true,
+      },
     ],
     '@typescript-eslint/no-empty-interface': `error`,
     '@typescript-eslint/no-explicit-any': `error`,
@@ -81,8 +81,8 @@ module.exports = {
     '@typescript-eslint/restrict-plus-operands': [
       `error`,
       {
-        checkCompoundAssignments: true
-      }
+        checkCompoundAssignments: true,
+      },
     ],
     '@typescript-eslint/switch-exhaustiveness-check': `error`,
     '@typescript-eslint/triple-slash-reference': [
@@ -90,11 +90,11 @@ module.exports = {
       {
         path: `never`,
         types: `never`,
-        lib: `never`
-      }
+        lib: `never`,
+      },
     ],
     '@typescript-eslint/type-annotation-spacing': `error`,
     '@typescript-eslint/unbound-method': `error`,
-    '@typescript-eslint/unified-signatures': `error`
-  }
+    '@typescript-eslint/unified-signatures': `error`,
+  },
 }

@@ -4,7 +4,7 @@ module.exports = isBrowserSupported()
   ? {
       plugins: [`compat`],
       rules: {
-        'compat/compat': `error`
-      }
+        'compat/compat': `error`,
+      },
     }
   : {}
