@@ -8,7 +8,7 @@ test.serial(`only node supported config`, async t => {
 
   const config = await eslint.calculateConfigForFile(fixture(`node/index.js`))
 
-  t.true(config.plugins.includes(`node`))
+  t.true(config.env.node)
   t.false(config.plugins.includes(`compat`))
 })
 
@@ -34,6 +34,6 @@ test.serial(`both node and browser supported`, async t => {
   )
   t.log(config)
 
-  t.true(config.plugins.includes(`node`))
+  t.true(config.env[`shared-node-browser`])
   t.true(config.plugins.includes(`compat`))
 })
