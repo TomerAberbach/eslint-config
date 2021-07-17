@@ -39,8 +39,8 @@ module.exports = {
     serviceworker: true,
     webextensions: true,
   },
-  plugins: [`import`, `ava`],
-  extends: [`./src/browser.js`, `plugin:ava/recommended`],
+  plugins: [`import`],
+  extends: [`./src/browser.js`],
   rules: {
     // Possible errors
     'for-direction': `error`,
@@ -265,9 +265,6 @@ module.exports = {
     'require-yield': `error`,
     'symbol-description': `error`,
 
-    'import/named': `error`,
-    'import/default': `error`,
-    'import/namespace': `error`,
     'import/no-absolute-path': `error`,
     'import/no-dynamic-require': `error`,
     'import/no-self-import': `error`,
