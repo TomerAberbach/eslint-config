@@ -226,7 +226,6 @@ module.exports = {
     'no-multi-assign': `error`,
     'no-new-object': `error`,
     'no-tabs': `error`,
-    'no-underscore-dangle': `error`,
     'no-unneeded-ternary': `error`,
     'one-var': [`error`, `never`],
     'operator-assignment': `error`,
