@@ -218,7 +218,6 @@ module.exports = {
       `always`,
       { exceptAfterSingleLine: true },
     ],
-    'multiline-comment-style': `error`,
     'new-cap': `error`,
     'no-array-constructor': `error`,
     'no-inline-comments': `error`,
