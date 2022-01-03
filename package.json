@@ -24,9 +24,9 @@
   "files": [
     "src",
     "index.js",
-    "react.js",
-    "typescript.js",
-    "typescript-react.js"
+    "jsx.js",
+    "ts.js",
+    "tsx.js"
   ],
   "engines": {
     "node": ">= 12.17"
@@ -37,26 +37,42 @@
     "lint": "tomer lint",
     "test": "tomer test"
   },
+  "eslintConfig": {
+    "extends": "./index.js"
+  },
   "dependencies": {
-    "@babel/core": "7.16.0",
-    "@babel/eslint-parser": "7.16.3",
-    "@babel/preset-env": "7.16.0",
-    "browserslist": "4.17.6",
-    "eslint-plugin-compat": "3.13.0",
-    "eslint-plugin-import": "2.25.3",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-react": "7.27.0",
+    "@babel/core": "7.16.7",
+    "@babel/eslint-parser": "7.16.5",
+    "@babel/preset-env": "7.16.7",
+    "@typescript-eslint/parser": "5.8.1",
+    "browserslist": "4.19.1",
     "read-pkg-up": "7.0.1"
   },
   "peerDependencies": {
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "typescript": "^4.0.0"
+  },
+  "optionalDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "eslint-plugin-compat": "^4.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "5.9.0",
     "ava": "3.15.0",
     "ava-fast-check": "4.0.2",
-    "fast-check": "2.19.0",
-    "tomer": "0.0.17",
-    "tsd": "0.18.0"
+    "eslint": "8.6.0",
+    "eslint-plugin-compat": "4.0.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "fast-check": "2.20.0",
+    "tomer": "0.0.20",
+    "tsd": "0.19.1",
+    "typescript": "4.5.4"
   }
 }

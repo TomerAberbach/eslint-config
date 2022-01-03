@@ -1,4 +1,4 @@
-const { isBrowserSupported } = require(`./environment.js`)
+const { isBrowserSupported } = require(`../env.js`)
 
 module.exports = isBrowserSupported()
   ? {

@@ -1,10 +1,11 @@
 module.exports = {
-  plugins: [`jsx-a11y`, `react`],
+  plugins: [`jsx-a11y`, `react`, `react-hooks`],
   rules: {
+    'no-throw-literal': `off`,
+
     'react/jsx-boolean-value': [`error`, `always`],
     'react/jsx-closing-bracket-location': [`error`, `line-aligned`],
     'react/jsx-closing-tag-location': `error`,
-    'react/jsx-curly-newline': [`error`, `consistent`],
     'react/jsx-curly-spacing': `error`,
     'react/jsx-equals-spacing': `error`,
     'react/jsx-first-prop-new-line': [`error`, `multiline-multiprop`],
@@ -21,7 +22,6 @@ module.exports = {
     'react/jsx-no-target-blank': `error`,
     'react/jsx-no-undef': `error`,
     'react/jsx-no-useless-fragment': `error`,
-    'react/jsx-one-expression-per-line': [`error`, { allow: `literal` }],
     'react/jsx-pascal-case': `error`,
     'react/jsx-tag-spacing': `error`,
     'react/jsx-uses-vars': `error`,
@@ -40,6 +40,9 @@ module.exports = {
     'react/jsx-handler-names': `error`,
     'react/jsx-key': [`error`, { checkFragmentShorthand: true }],
     'react/jsx-no-bind': `error`,
+
+    'react-hooks/rules-of-hooks': `error`,
+    'react-hooks/exhaustive-deps': `error`,
 
     'jsx-a11y/accessible-emoji': `error`,
     'jsx-a11y/alt-text': `error`,
@@ -116,7 +119,6 @@ module.exports = {
     ],
     'jsx-a11y/no-noninteractive-element-to-interactive-role': `error`,
     'jsx-a11y/no-noninteractive-tabindex': `error`,
-    'jsx-a11y/no-onchange': `error`,
     'jsx-a11y/no-redundant-roles': `error`,
     'jsx-a11y/no-static-element-interactions': `error`,
     'jsx-a11y/role-has-required-aria-props': `error`,
