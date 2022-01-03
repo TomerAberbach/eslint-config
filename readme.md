@@ -48,6 +48,13 @@ file.
 Run `eslint` with
 [the supported options](https://eslint.org/docs/user-guide/command-line-interface#options).
 
+The following configurations are available:
+
+- `@tomer` (same as `@tomer/eslint-config`)
+- `@tomer/eslint-config/jsx`
+- `@tomer/eslint-config/ts`
+- `@tomer/eslint-config/tsx`
+
 Note that this configuration is intended to be used with
 [`@tomer/prettier-config`](https://github.com/TomerAberbach/prettier-config).
 
