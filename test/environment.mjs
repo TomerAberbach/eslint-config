@@ -1,5 +1,5 @@
 import test from 'ava'
-import { isNodeSupported, isBrowserSupported } from '../src/environment.js'
+import { isNodeSupported, isBrowserSupported } from '../src/env.js'
 import { fixture } from './helpers/index.mjs'
 
 test.serial(`only node supported`, t => {
