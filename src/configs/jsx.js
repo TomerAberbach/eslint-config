@@ -3,18 +3,13 @@ module.exports = {
   rules: {
     'no-throw-literal': `off`,
 
-    'react/jsx-boolean-value': [`error`, `always`],
+    'react/jsx-boolean-value': [`error`, `never`],
     'react/jsx-closing-bracket-location': [`error`, `line-aligned`],
     'react/jsx-closing-tag-location': `error`,
     'react/jsx-curly-spacing': `error`,
     'react/jsx-equals-spacing': `error`,
     'react/jsx-first-prop-new-line': [`error`, `multiline-multiprop`],
     'react/jsx-fragments': `error`,
-    'react/jsx-indent': [
-      `error`,
-      2,
-      { checkAttributes: true, indentLogicalExpressions: true },
-    ],
     'react/jsx-indent-props': [`error`, 2],
     'react/jsx-no-comment-textnodes': `error`,
     'react/jsx-no-duplicate-props': `error`,
