@@ -222,7 +222,8 @@ module.exports = {
     'require-yield': `error`,
     'symbol-description': `error`,
 
-    'sort-imports': `error`,
+    'sort-imports': [`error`, { ignoreDeclarationSort: true }],
+    'import/order': `error`,
     'import/no-absolute-path': `error`,
     'import/no-dynamic-require': `error`,
     'import/no-self-import': `error`,
