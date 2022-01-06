@@ -222,6 +222,7 @@ module.exports = {
     'require-yield': `error`,
     'symbol-description': `error`,
 
+    'sort-imports': `error`,
     'import/no-absolute-path': `error`,
     'import/no-dynamic-require': `error`,
     'import/no-self-import': `error`,
@@ -233,7 +234,6 @@ module.exports = {
     'import/no-mutable-exports': `error`,
     'import/first': `error`,
     'import/no-duplicates': `error`,
-    'import/order': `error`,
     'import/newline-after-import': `error`,
   },
 }
