@@ -159,19 +159,6 @@ module.exports = {
     'func-names': [`error`, `never`],
     'func-style': [`error`, `declaration`, { allowArrowFunctions: true }],
     'line-comment-position': `error`,
-    'lines-around-comment': [
-      `error`,
-      {
-        beforeBlockComment: true,
-        afterBlockComment: false,
-        beforeLineComment: true,
-        afterLineComment: false,
-        allowBlockStart: true,
-        allowObjectStart: true,
-        allowArrayStart: true,
-        allowClassStart: true,
-      },
-    ],
     'lines-between-class-members': [
       `error`,
       `always`,
