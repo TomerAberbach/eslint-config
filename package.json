@@ -22,30 +22,38 @@
   },
   "license": "MIT",
   "files": [
-    "src",
     "index.js",
-    "jsx.js",
-    "ts.js",
-    "tsx.js"
+    "babel.config.json"
   ],
   "engines": {
     "node": ">= 12.17"
   },
   "main": "index.js",
   "scripts": {
-    "prepare": "tomer install",
-    "lint": "tomer lint",
-    "test": "tomer test"
+    "prepare": "husky install",
+    "lint:fix": "eslint . --quiet --fix --ignore-path .gitignore",
+    "lint:format": "prettier --loglevel warn  --ignore-path .gitignore --write \"./**/*.{js,jsx,ts,tsx,css,md,json,html}\"",
+    "lint": "run-s --continue-on-error lint:*"
   },
+  "prettier": "@tomer/prettier-config",
   "eslintConfig": {
     "extends": "./index.js"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "*.{jsx,js,ts,tsx}": "eslint --quiet --fix",
+    "*.{js,jsx,ts,tsx,css,md,json,html}": "prettier --loglevel warn --write"
+  },
   "dependencies": {
-    "@babel/core": "7.16.7",
-    "@babel/eslint-parser": "7.16.5",
-    "@babel/preset-env": "7.16.7",
-    "@typescript-eslint/parser": "5.8.1",
-    "browserslist": "4.19.1",
+    "@babel/core": "7.17.5",
+    "@babel/eslint-parser": "7.17.0",
+    "@babel/preset-env": "7.16.11",
+    "@typescript-eslint/parser": "5.13.0",
+    "browserslist": "4.19.3",
     "read-pkg-up": "7.0.1"
   },
   "peerDependencies": {
@@ -53,26 +61,27 @@
     "typescript": "^4.0.0"
   },
   "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.0.0",
-    "eslint-plugin-compat": "^4.0.0",
-    "eslint-plugin-import": "^2.0.0",
-    "eslint-plugin-jsx-a11y": "^6.0.0",
-    "eslint-plugin-react": "^7.0.0",
-    "eslint-plugin-react-hooks": "^4.0.0"
+    "@typescript-eslint/eslint-plugin": "^5.13.0",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^16.2.1",
     "@typescript-eslint/eslint-plugin": "5.9.0",
-    "ava": "3.15.0",
-    "ava-fast-check": "4.0.2",
-    "eslint": "8.6.0",
+    "commitlint": "^16.2.1",
+    "eslint": "8.10.0",
     "eslint-plugin-compat": "4.0.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-react-hooks": "4.3.0",
-    "fast-check": "2.20.0",
-    "tomer": "0.0.20",
-    "tsd": "0.19.1",
-    "typescript": "4.5.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "typescript": "^4.6.2"
   }
 }

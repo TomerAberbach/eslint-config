@@ -6,9 +6,6 @@
   <a href="https://npmjs.org/package/eslint-config">
     <img src="https://badgen.now.sh/npm/v/eslint-config" alt="version" />
   </a>
-  <a href="https://github.com/TomerAberbach/eslint-config/actions">
-    <img src="https://github.com/TomerAberbach/eslint-config/workflows/CI/badge.svg" alt="CI" />
-  </a>
   <a href="https://bundlephobia.com/result?p=@tomer/eslint-config">
     <img src="https://badgen.net/bundlephobia/minzip/@tomer/eslint-config" alt="minzip size" />
   </a>
@@ -47,13 +44,6 @@ file.
 
 Run `eslint` with
 [the supported options](https://eslint.org/docs/user-guide/command-line-interface#options).
-
-The following configurations are available:
-
-- `@tomer` (same as `@tomer/eslint-config`)
-- `@tomer/eslint-config/jsx`
-- `@tomer/eslint-config/ts`
-- `@tomer/eslint-config/tsx`
 
 Note that this configuration is intended to be used with
 [`@tomer/prettier-config`](https://github.com/TomerAberbach/prettier-config).
