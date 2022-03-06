@@ -31,7 +31,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "lint:fix": "eslint . --quiet --fix --ignore-path .gitignore",
+    "lint:fix": "eslint --quiet --fix --ignore-path .gitignore .",
     "lint:format": "prettier --loglevel warn  --ignore-path .gitignore --write \"./**/*.{js,jsx,ts,tsx,css,md,json,html}\"",
     "lint": "run-s --continue-on-error lint:*"
   },
@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^16.2.1",
+    "@tomer/prettier-config": "^0.3.0",
     "@typescript-eslint/eslint-plugin": "5.9.0",
     "commitlint": "^16.2.1",
     "eslint": "8.10.0",

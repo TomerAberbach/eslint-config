@@ -2,17 +2,11 @@ const readPkgUp = require(`read-pkg-up`)
 const browserslist = require(`browserslist`)
 
 module.exports = {
-  parser: require.resolve(`@babel/eslint-parser`),
   parserOptions: {
     ecmaVersion: `latest`,
     sourceType: `module`,
     ecmaFeatures: {
       impliedStrict: true,
-      jsx: true,
-    },
-    requireConfigFile: false,
-    babelOptions: {
-      configFile: require.resolve(`./babel.config.json`),
     },
   },
   env: {
@@ -250,7 +244,22 @@ module.exports = {
   },
   overrides: [
     {
+      files: `*.{js,mjs,jsx}`,
+      parser: require.resolve(`@babel/eslint-parser`),
+      parserOptions: {
+        requireConfigFile: false,
+        babelOptions: {
+          configFile: require.resolve(`./babel.config.json`),
+        },
+      },
+    },
+    {
       files: `*.{jsx,tsx}`,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
       settings: {
         react: {
           version: `detect`,
