@@ -520,7 +520,11 @@ module.exports = {
         'dot-notation': `off`,
         '@typescript-eslint/dot-notation': `error`,
         'lines-between-class-members': `off`,
-        '@typescript-eslint/lines-between-class-members': `error`,
+        '@typescript-eslint/lines-between-class-members': [
+          `error`,
+          `always`,
+          { exceptAfterSingleLine: true },
+        ],
         'no-array-constructor': `off`,
         '@typescript-eslint/no-array-constructor': `error`,
         'no-empty-function': `off`,
