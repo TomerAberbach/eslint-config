@@ -460,7 +460,12 @@ module.exports = {
             ignoreVoidOperator: true,
           },
         ],
-        '@typescript-eslint/no-empty-interface': `error`,
+        '@typescript-eslint/no-empty-interface': [
+          `error`,
+          {
+            allowSingleExtends: true,
+          },
+        ],
         '@typescript-eslint/no-explicit-any': `error`,
         '@typescript-eslint/no-extra-non-null-assertion': `error`,
         '@typescript-eslint/no-extraneous-class': `error`,
