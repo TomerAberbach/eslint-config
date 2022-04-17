@@ -567,6 +567,8 @@ module.exports = {
         '@typescript-eslint/require-await': `error`,
         'no-return-await': `off`,
         '@typescript-eslint/no-return-await': `off`,
+        'no-dupe-class-members': `off`,
+        '@typescript-eslint/no-dupe-class-members': `error`,
       },
     },
     {
