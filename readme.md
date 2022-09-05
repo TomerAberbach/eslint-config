@@ -3,8 +3,8 @@
 </h1>
 
 <div align="center">
-  <a href="https://npmjs.org/package/eslint-config">
-    <img src="https://badgen.now.sh/npm/v/eslint-config" alt="version" />
+  <a href="https://npmjs.org/package/@tomer/eslint-config">
+    <img src="https://badgen.now.sh/npm/v/@tomer/eslint-config" alt="version" />
   </a>
   <a href="https://bundlephobia.com/result?p=@tomer/eslint-config">
     <img src="https://badgen.net/bundlephobia/minzip/@tomer/eslint-config" alt="minzip size" />
