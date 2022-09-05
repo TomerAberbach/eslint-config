@@ -30,23 +30,13 @@
   },
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install",
-    "lint:fix": "eslint --quiet --fix --ignore-path .gitignore .",
-    "lint:format": "prettier --loglevel warn  --ignore-path .gitignore --write \"./**/*.{js,jsx,ts,tsx,css,md,json,html}\"",
-    "lint": "run-s --continue-on-error lint:*"
+    "prepare": "tomer install",
+    "format": "tomer format",
+    "lint": "tomer lint"
   },
-  "prettier": "@tomer/prettier-config",
+  "prettier": "tomer/prettier",
   "eslintConfig": {
     "extends": "./index.js"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.{jsx,js,ts,tsx}": "eslint --quiet --fix",
-    "*.{js,jsx,ts,tsx,css,md,json,html}": "prettier --loglevel warn --write"
   },
   "dependencies": {
     "@babel/core": "7.17.5",
@@ -70,21 +60,6 @@
     "eslint-plugin-react-hooks": "^4.3.0"
   },
   "devDependencies": {
-    "@commitlint/config-conventional": "^16.2.1",
-    "@tomer/prettier-config": "^0.3.0",
-    "@typescript-eslint/eslint-plugin": "5.9.0",
-    "commitlint": "^16.2.1",
-    "eslint": "8.10.0",
-    "eslint-plugin-compat": "4.0.0",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
-    "eslint-plugin-jsx-a11y": "6.5.1",
-    "eslint-plugin-react": "7.28.0",
-    "eslint-plugin-react-hooks": "4.3.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.5",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.5.1",
-    "typescript": "^4.6.2"
+    "tomer": "^0.1.8"
   }
 }
