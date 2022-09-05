@@ -249,7 +249,10 @@ module.exports = {
     ],
     'jest/expect-expect': [
       `error`,
-      { additionalTestBlockFunctions: [`testProp`] },
+      {
+        assertFunctionNames: [`expect`, `expectTypeOf`],
+        additionalTestBlockFunctions: [`testProp`],
+      },
     ],
     'jest/no-alias-methods': `error`,
     'jest/no-commented-out-tests': `error`,
