@@ -60,6 +60,6 @@
     "eslint-plugin-react-hooks": "^4.3.0"
   },
   "devDependencies": {
-    "tomer": "^0.1.8"
+    "tomer": "^0.2.9"
   }
 }
