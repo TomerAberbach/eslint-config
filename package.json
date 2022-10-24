@@ -22,44 +22,47 @@
   },
   "license": "MIT",
   "files": [
-    "index.js",
-    "babel.config.json"
+    "src"
   ],
+  "type": "module",
+  "sideEffects": false,
   "engines": {
-    "node": ">= 12.17"
+    "node": ">= 14.6"
   },
-  "main": "index.js",
+  "exports": "./src/index.js",
   "scripts": {
     "prepare": "tomer install",
     "format": "tomer format",
     "lint": "tomer lint"
   },
   "prettier": "tomer/prettier",
-  "eslintConfig": {
-    "extends": "./index.js"
-  },
   "dependencies": {
-    "@babel/core": "7.17.5",
-    "@babel/eslint-parser": "7.17.0",
-    "@babel/preset-env": "7.16.11",
-    "@typescript-eslint/parser": "5.13.0",
-    "browserslist": "4.19.3",
-    "read-pkg-up": "7.0.1"
+    "@babel/core": "7.19.6",
+    "@babel/eslint-parser": "7.19.1",
+    "@babel/preset-env": "7.19.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "5.40.1",
+    "browserslist": "4.21.4",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jest": "^27.1.3",
+    "eslint-plugin-jest-dom": "^4.0.2",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-markdown": "^3.0.0",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-sonarjs": "^0.16.0",
+    "eslint-plugin-testing-library": "^5.9.1",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "eslint-plugin-unicorn": "^44.0.2",
+    "globals": "^13.17.0",
+    "read-pkg-up": "9.1.0"
   },
   "peerDependencies": {
     "eslint": "^8.0.0",
     "typescript": "^4.0.0"
   },
-  "optionalDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.13.0",
-    "eslint-plugin-compat": "^4.0.2",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-jest": "^26.1.1",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-react": "^7.29.3",
-    "eslint-plugin-react-hooks": "^4.3.0"
-  },
   "devDependencies": {
-    "tomer": "^0.2.9"
+    "tomer": "link:/Users/tomer/documents/work/code/tomer"
   }
 }
