@@ -28,7 +28,7 @@ Configure ESLint to use `@tomer/eslint-config` by
 
 **eslint.config.js**
 
-```json
+```js
 export { default } from '@tomer/eslint-config'
 ```
 
