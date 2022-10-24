@@ -33,7 +33,7 @@
   "scripts": {
     "prepare": "tomer install",
     "format": "tomer format",
-    "lint": "tomer lint"
+    "lint": "tomer lint --config src/index.js"
   },
   "prettier": "tomer/prettier",
   "dependencies": {
