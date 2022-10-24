@@ -63,6 +63,6 @@
     "typescript": "^4.0.0"
   },
   "devDependencies": {
-    "tomer": "link:/Users/tomer/documents/work/code/tomer"
+    "tomer": "^0.2.10"
   }
 }
