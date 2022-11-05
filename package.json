@@ -55,6 +55,7 @@
     "eslint-plugin-testing-library": "^5.9.1",
     "eslint-plugin-tsdoc": "^0.2.17",
     "eslint-plugin-unicorn": "^44.0.2",
+    "find-up": "5.0.0",
     "globals": "^13.17.0",
     "read-pkg-up": "9.1.0"
   },
