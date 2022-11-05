@@ -389,8 +389,12 @@ export default [
     },
   },
   {
+    files: [`**/*.config.{js,cjs,mjs,jsx,ts,cts,mts,tsx}`],
+    languageOptions: { globals: globals.node },
+  },
+  {
     files: [`test/**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}`],
-    languageOptions: { globals: globals.jest },
+    languageOptions: { globals: { ...globals.node, ...globals.jest } },
     plugins: {
       jest: jestPlugin,
       'testing-library': testingLibraryPlugin,
