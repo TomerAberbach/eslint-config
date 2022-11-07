@@ -117,7 +117,7 @@ export default [
       'no-prototype-builtins': `error`,
       'no-restricted-syntax': [
         `error`,
-        `FunctionExpression[generator=false]`,
+        `:not(MethodDefinition[kind="constructor"]) > FunctionExpression[generator=false]`,
         `FunctionDeclaration[generator=false]`,
       ],
       'no-self-assign': `error`,
