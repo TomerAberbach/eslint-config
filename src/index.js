@@ -789,6 +789,7 @@ export default [
     rules: {
       'no-empty-function': `off`,
       'no-undef': `off`,
+      'no-unused-vars': `off`,
       'spaced-comment': [`error`, `always`, { line: { markers: [`=>`] } }],
     },
   },
