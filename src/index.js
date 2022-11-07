@@ -363,7 +363,6 @@ export default [
       'unicorn/prefer-prototype-methods': `error`,
       'unicorn/prefer-regexp-test': `error`,
       'unicorn/prefer-set-has': `error`,
-      'unicorn/prefer-spread': `error`,
       'unicorn/prefer-string-replace-all': `error`,
       'unicorn/prefer-string-slice': `error`,
       'unicorn/prefer-string-starts-ends-with': `error`,
