@@ -363,7 +363,6 @@ export default [
       'unicorn/prefer-prototype-methods': `error`,
       'unicorn/prefer-regexp-test': `error`,
       'unicorn/prefer-set-has': `error`,
-      'unicorn/prefer-spread': `error`,
       'unicorn/prefer-string-replace-all': `error`,
       'unicorn/prefer-string-slice': `error`,
       'unicorn/prefer-string-starts-ends-with': `error`,
@@ -383,7 +382,6 @@ export default [
       'sonarjs/no-empty-collection': `error`,
       'sonarjs/no-extra-arguments': `error`,
       'sonarjs/no-identical-conditions': `error`,
-      'sonarjs/no-identical-expressions': `error`,
       'sonarjs/no-ignored-return': `error`,
       'sonarjs/no-use-of-empty-return-value': `error`,
     },
@@ -790,6 +788,7 @@ export default [
     rules: {
       'no-empty-function': `off`,
       'no-undef': `off`,
+      'no-unused-vars': `off`,
       'spaced-comment': [`error`, `always`, { line: { markers: [`=>`] } }],
     },
   },
