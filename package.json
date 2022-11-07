@@ -64,6 +64,6 @@
     "typescript": "^4.0.0"
   },
   "devDependencies": {
-    "tomer": "^0.2.10"
+    "tomer": "^1.1.0"
   }
 }
