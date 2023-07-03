@@ -37,22 +37,21 @@
   },
   "prettier": "tomer/prettier",
   "dependencies": {
-    "@babel/core": "7.21.8",
-    "@babel/eslint-parser": "7.21.8",
-    "@babel/preset-env": "7.21.5",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "5.59.2",
-    "browserslist": "4.21.5",
+    "@babel/core": "7.22.5",
+    "@babel/eslint-parser": "7.22.5",
+    "@babel/preset-env": "7.22.5",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "5.60.1",
+    "browserslist": "4.21.9",
     "eslint-plugin-compat": "^4.1.4",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.2.1",
-    "eslint-plugin-jest-dom": "^4.0.3",
+    "eslint-plugin-jest": "^27.2.2",
+    "eslint-plugin-jest-dom": "^5.0.1",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-markdown": "^3.0.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sonarjs": "^0.19.0",
-    "eslint-plugin-testing-library": "^5.10.3",
+    "eslint-plugin-testing-library": "^5.11.0",
     "eslint-plugin-tsdoc": "^0.2.17",
     "eslint-plugin-unicorn": "^47.0.0",
     "find-up": "5.0.0",
@@ -64,8 +63,9 @@
     "typescript": "^5.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.40.0",
-    "tomer": "^2.0.0",
-    "typescript": "^5.0.4"
+    "eslint": "^8.44.0",
+    "prettier": "^2.8.8",
+    "tomer": "^2.0.3",
+    "typescript": "^5.1.6"
   }
 }

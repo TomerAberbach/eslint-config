@@ -1,8 +1,5 @@
-import { dirname, join } from 'path'
-import { fileURLToPath } from 'url'
 import { readPackageUp } from 'read-pkg-up'
 import browserslist from 'browserslist'
-import importPlugin from 'eslint-plugin-import'
 import jestPlugin from 'eslint-plugin-jest'
 import globals from 'globals'
 import typescriptPlugin from '@typescript-eslint/eslint-plugin'
@@ -18,10 +15,6 @@ import sonarjsPlugin from 'eslint-plugin-sonarjs'
 import typescriptParser from './parsers/typescript-parser.js'
 import jsxBabelParser from './parsers/jsx-babel-parser.js'
 import babelParser from './parsers/babel-parser.js'
-
-const __dirname = dirname(fileURLToPath(import.meta.url))
-const getParserPath = parserName =>
-  join(__dirname, `./parsers/${parserName}-parser.js`)
 
 const getBaseGlobals = async () => {
   const isNode = await isNodeSupported()
@@ -54,15 +47,7 @@ const isBrowserSupported = () => Boolean(browserslist.findConfig(process.cwd()))
 export default [
   {
     languageOptions: { globals: await getBaseGlobals() },
-    settings: {
-      'import/parsers': {
-        [getParserPath(`babel`)]: [`.js`, `.cjs`, `.mjs`],
-        [getParserPath(`jsx-babel`)]: [`.jsx`],
-        [getParserPath(`typescript`)]: [`.ts`, `.cts`, `.mts`, `.tsx`],
-      },
-    },
     plugins: {
-      import: importPlugin,
       unicorn: unicornPlugin,
       sonarjs: sonarjsPlugin,
     },
@@ -285,22 +270,6 @@ export default [
       ],
       'no-tabs': `error`,
       quotes: [`error`, `backtick`],
-
-      'sort-imports': [`error`, { ignoreDeclarationSort: true }],
-      'import/no-absolute-path': `error`,
-      'import/no-dynamic-require': `error`,
-      'import/no-self-import': `error`,
-      'import/no-useless-path-segments': `error`,
-      'import/export': `error`,
-      'import/no-named-as-default': `error`,
-      'import/no-named-as-default-member': `error`,
-      'import/no-extraneous-dependencies': `error`,
-      'import/no-mutable-exports': `error`,
-      'import/first': `error`,
-      'import/no-duplicates': `error`,
-      'import/order': `error`,
-      'import/newline-after-import': `error`,
-      'import/extensions': [`error`, `ignorePackages`],
 
       'unicorn/better-regex': `error`,
       'unicorn/catch-error-name': `error`,
