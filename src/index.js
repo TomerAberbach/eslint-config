@@ -275,8 +275,6 @@ export default [
 
       'import/export': `error`,
       'import/no-empty-named-blocks': `error`,
-      'import/no-named-as-default': `error`,
-      'import/no-named-as-default-member': `error`,
       'import/no-useless-path-segments': `error`,
       'import/consistent-type-specifier-style': [`error`, `prefer-top-level`],
       'import/exports-last': `error`,
