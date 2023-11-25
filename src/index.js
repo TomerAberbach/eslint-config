@@ -725,7 +725,7 @@ export default [
 
       'no-undef': `off`,
       'class-methods-use-this': `off`,
-      '@typescript-eslint/class-methods-use-this': `error`,
+      'typescript/class-methods-use-this': `error`,
       'default-param-last': `off`,
       'typescript/default-param-last': `error`,
       'dot-notation': `off`,
