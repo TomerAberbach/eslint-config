@@ -273,13 +273,10 @@ export default [
       'no-tabs': `error`,
       quotes: [`error`, `backtick`],
 
-      'import/export': `error`,
       'import/no-empty-named-blocks': `error`,
       'import/no-useless-path-segments': `error`,
       'import/consistent-type-specifier-style': [`error`, `prefer-top-level`],
-      'import/exports-last': `error`,
       'import/first': `error`,
-      'import/group-exports': `error`,
       'import/newline-after-import': `error`,
       'import/no-duplicates': `error`,
       'sort-imports': [`error`, { ignoreDeclarationSort: true }],
