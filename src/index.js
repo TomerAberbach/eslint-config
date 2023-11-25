@@ -1,5 +1,6 @@
 import typescriptPlugin from '@typescript-eslint/eslint-plugin'
 import browserslist from 'browserslist'
+import importPlugin from 'eslint-plugin-import'
 import jestPlugin from 'eslint-plugin-jest'
 import jestDomPlugin from 'eslint-plugin-jest-dom'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
@@ -48,6 +49,7 @@ export default [
   {
     languageOptions: { globals: await getBaseGlobals() },
     plugins: {
+      import: importPlugin,
       unicorn: unicornPlugin,
       sonarjs: sonarjsPlugin,
     },
@@ -270,6 +272,20 @@ export default [
       ],
       'no-tabs': `error`,
       quotes: [`error`, `backtick`],
+
+      'import/export': `error`,
+      'import/no-empty-named-blocks': `error`,
+      'import/no-named-as-default': `error`,
+      'import/no-named-as-default-member': `error`,
+      'import/no-useless-path-segments': `error`,
+      'import/consistent-type-specifier-style': [`error`, `prefer-top-level`],
+      'import/exports-last': `error`,
+      'import/first': `error`,
+      'import/group-exports': `error`,
+      'import/newline-after-import': `error`,
+      'import/no-duplicates': `error`,
+      'sort-imports': [`error`, { ignoreDeclarationSort: true }],
+      'import/order': `error`,
 
       'unicorn/better-regex': `error`,
       'unicorn/catch-error-name': `error`,
