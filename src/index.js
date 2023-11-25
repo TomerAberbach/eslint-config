@@ -436,10 +436,10 @@ export default [
       'jest/valid-title': `error`,
 
       'testing-library/await-async-events': `error`,
-      'testing-library/await-async-query': `error`,
+      'testing-library/await-async-queries': `error`,
       'testing-library/await-async-utils': `error`,
       'testing-library/no-await-sync-events': `error`,
-      'testing-library/no-await-sync-query': `error`,
+      'testing-library/no-await-sync-queries': `error`,
       'testing-library/no-dom-import': `error`,
       'testing-library/no-global-regexp-flag-in-query': `error`,
       'testing-library/no-manual-cleanup': `error`,
