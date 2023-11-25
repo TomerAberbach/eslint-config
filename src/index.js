@@ -708,12 +708,7 @@ export default [
       'typescript/prefer-return-this-type': `error`,
       'typescript/prefer-string-starts-ends-with': `error`,
       'typescript/prefer-ts-expect-error': `error`,
-      'typescript/restrict-plus-operands': [
-        `error`,
-        {
-          checkCompoundAssignments: true,
-        },
-      ],
+      'typescript/restrict-plus-operands': `error`,
       'typescript/restrict-template-expressions': `error`,
       'typescript/switch-exhaustiveness-check': `error`,
       'typescript/triple-slash-reference': [
