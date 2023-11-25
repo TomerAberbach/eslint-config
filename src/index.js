@@ -781,8 +781,8 @@ export default [
       'typescript/no-return-await': `off`,
       'no-dupe-class-members': `off`,
       'typescript/no-dupe-class-members': `error`,
-      'no-unused-expression': `off`,
-      'typescript/no-unused-expression': `error`,
+      'no-unused-expressions': `off`,
+      'typescript/no-unused-expressions': `error`,
       'prefer-destructuring': `off`,
       'typescript/prefer-destructuring': [
         `error`,
