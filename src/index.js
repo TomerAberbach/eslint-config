@@ -706,6 +706,8 @@ export default [
       'typescript/unified-signatures': `error`,
 
       'no-undef': `off`,
+      'consistent-return': `off`,
+      'default-case': `off`,
       'class-methods-use-this': `off`,
       'typescript/class-methods-use-this': `error`,
       'default-param-last': `off`,
