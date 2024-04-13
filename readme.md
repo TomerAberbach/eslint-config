@@ -6,8 +6,11 @@
   <a href="https://npmjs.org/package/@tomer/eslint-config">
     <img src="https://badgen.now.sh/npm/v/@tomer/eslint-config" alt="version" />
   </a>
-  <a href="https://bundlephobia.com/result?p=@tomer/eslint-config">
-    <img src="https://badgen.net/bundlephobia/minzip/@tomer/eslint-config" alt="minzip size" />
+  <a href="https://unpkg.com/@tomer/eslint-config/dist/index.js">
+    <img src="https://deno.bundlejs.com/?q=@tomer/eslint-config&badge" alt="gzip size" />
+  </a>
+  <a href="https://unpkg.com/@tomer/eslint-config/dist/index.js">
+    <img src="https://deno.bundlejs.com/?q=@tomer/eslint-config&config={%22compression%22:{%22type%22:%22brotli%22}}&badge" alt="brotli size" />
   </a>
 </div>
 
