@@ -29,11 +29,15 @@
   "engines": {
     "node": ">= 18"
   },
-  "exports": "./src/index.js",
+  "exports": {
+    "types": "./src/index.d.ts",
+    "default": "./src/index.js"
+  },
   "scripts": {
     "prepare": "tomer install",
     "format": "tomer format",
-    "lint": "tomer lint --config src/index.js"
+    "lint": "tomer lint --config src/index.js",
+    "typecheck": "tomer typecheck"
   },
   "prettier": "tomer/prettier",
   "dependencies": {
