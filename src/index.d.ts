@@ -1,3 +1,3 @@
-type EslintConfig = Record<string, unknown>[]
+declare const config: Record<string, unknown>[]
 
-export default EslintConfig
+export default config
