@@ -1,1 +1,3 @@
-export default Record<string, unknown>
+type EslintConfig = Record<string, unknown>[]
+
+export default EslintConfig
