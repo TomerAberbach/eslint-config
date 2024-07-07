@@ -334,7 +334,6 @@ export default [
       'unicorn/prefer-event-target': `error`,
       'unicorn/prefer-export-from': `error`,
       'unicorn/prefer-includes': `error`,
-      'unicorn/prefer-json-parse-buffer': `error`,
       'unicorn/prefer-keyboard-event-key': `error`,
       'unicorn/prefer-logical-operator-over-ternary': `error`,
       'unicorn/prefer-math-trunc': `error`,
