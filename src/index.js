@@ -577,7 +577,6 @@ export default [
       'vitest/no-alias-methods': ERROR,
       'vitest/no-commented-out-tests': ERROR,
       'vitest/no-identical-title': ERROR,
-      'vitest/no-standalone-expect': ERROR,
       'vitest/no-test-return-statement': ERROR,
       'vitest/prefer-each': ERROR,
       'vitest/prefer-equality-matcher': ERROR,
