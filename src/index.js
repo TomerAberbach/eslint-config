@@ -478,6 +478,13 @@ export default [
   // React
   {
     files: [`**/*.{jsx,mjsx,cjsx,tsx,mtsx,ctsx}`],
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
     settings: { react: { version: `detect` } },
     plugins: {
       react: reactPlugin,
