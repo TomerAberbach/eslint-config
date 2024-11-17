@@ -1,4 +1,4 @@
-import typescriptPlugin from '@typescript-eslint/eslint-plugin'
+import tsEslint from 'typescript-eslint'
 import browserslist from 'browserslist'
 import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
@@ -11,7 +11,6 @@ import unicornPlugin from 'eslint-plugin-unicorn'
 import globals from 'globals'
 import { readPackageUp } from 'read-package-up'
 import stylisticPlugin from '@stylistic/eslint-plugin'
-import typescriptParser from '@typescript-eslint/parser'
 import commandPluginConfig from 'eslint-plugin-command/config'
 import vitestPlugin from 'eslint-plugin-vitest'
 import securityPlugin from 'eslint-plugin-security'
@@ -113,6 +112,7 @@ export default [
         ERROR,
         { functions: false, classes: false, variables: false },
       ],
+      'no-useless-assignment': ERROR,
       'require-atomic-updates': ERROR,
       'use-isnan': ERROR,
       'valid-typeof': ERROR,
@@ -316,10 +316,10 @@ export default [
   {
     files: [`**/*.{ts,mts,cts,tsx,mtsx,ctsx}`],
     languageOptions: {
-      parser: typescriptParser,
+      parser: tsEslint.parser,
       parserOptions: { project: true },
     },
-    plugins: { typescript: typescriptPlugin, tsdoc: tsDocPlugin },
+    plugins: { typescript: tsEslint.plugin, tsdoc: tsDocPlugin },
     rules: {
       // Handled by TypeScript.
       'constructor-super': OFF,
@@ -563,7 +563,7 @@ export default [
   // TypeScript React
   {
     files: [`**/*.{tsx,mtsx,ctsx}`],
-    plugins: { typescript: typescriptPlugin },
+    plugins: { typescript: tsEslint.plugin },
     rules: {
       // It's common to need to throw non-Errors in React.
       'typescript/only-throw-error': OFF,
