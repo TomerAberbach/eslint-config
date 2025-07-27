@@ -322,6 +322,7 @@ export default [
     plugins: { typescript: tsEslint.plugin, tsdoc: tsDocPlugin },
     rules: {
       // Handled by TypeScript.
+      'array-callback-return': OFF,
       'constructor-super': OFF,
       'getter-return': OFF,
       'no-class-assign': OFF,
