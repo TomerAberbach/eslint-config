@@ -400,7 +400,10 @@ export default [
       'typescript/no-non-null-asserted-optional-chain': ERROR,
       'typescript/no-redundant-type-constituents': ERROR,
       'typescript/no-unnecessary-boolean-literal-compare': ERROR,
-      'typescript/no-unnecessary-condition': ERROR,
+      'typescript/no-unnecessary-condition': [
+        ERROR,
+        { allowConstantLoopConditions: `only-allow-literals` },
+      ],
       'typescript/no-unnecessary-parameter-property-assignment': ERROR,
       'typescript/no-unnecessary-qualifier': ERROR,
       'typescript/no-unnecessary-template-expression': ERROR,
@@ -601,7 +604,7 @@ export default [
       'vitest/require-local-test-context-for-concurrent-snapshots': ERROR,
       'vitest/require-to-throw-message': ERROR,
       'vitest/valid-describe-callback': ERROR,
-      'vitest/valid-expect': ERROR,
+      'vitest/valid-expect': [ERROR, { maxArgs: 2 }],
       'vitest/valid-title': ERROR,
 
       'testing-library/await-async-events': ERROR,
