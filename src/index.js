@@ -402,7 +402,7 @@ export default [
       'typescript/no-unnecessary-boolean-literal-compare': ERROR,
       'typescript/no-unnecessary-condition': [
         ERROR,
-        { allowConstantLoopConditions: `only-allow-literals` },
+        { allowConstantLoopConditions: `only-allowed-literals` },
       ],
       'typescript/no-unnecessary-parameter-property-assignment': ERROR,
       'typescript/no-unnecessary-qualifier': ERROR,
