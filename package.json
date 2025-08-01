@@ -27,7 +27,7 @@
   "type": "module",
   "sideEffects": false,
   "engines": {
-    "node": ">= 18"
+    "node": ">= 22"
   },
   "exports": {
     "types": "./src/index.d.ts",
