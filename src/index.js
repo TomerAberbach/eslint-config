@@ -1,22 +1,24 @@
+import fs from 'node:fs'
 import tsEslint from 'typescript-eslint'
 import browserslist from 'browserslist'
 import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import markdownPlugin from 'eslint-plugin-markdown'
-import reactPlugin from 'eslint-plugin-react'
+import dependPlugin from 'eslint-plugin-depend'
+import reactPlugin from 'eslint-plugin-react' // eslint-disable-line depend/ban-dependencies
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import testingLibraryPlugin from 'eslint-plugin-testing-library'
 import tsDocPlugin from 'eslint-plugin-tsdoc'
 import unicornPlugin from 'eslint-plugin-unicorn'
 import globals from 'globals'
-import { readPackageUp } from 'read-package-up'
+import * as pkg from 'empathic/package'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 import commandPluginConfig from 'eslint-plugin-command/config'
-import vitestPlugin from 'eslint-plugin-vitest'
+import vitestPlugin from '@vitest/eslint-plugin'
 import securityPlugin from 'eslint-plugin-security'
 
-const getBaseGlobals = async () => {
-  const isNode = await isNodeSupported()
+const getBaseGlobals = () => {
+  const isNode = isNodeSupported()
   const isBrowser = isBrowserSupported()
 
   if (isNode && isBrowser) {
@@ -34,10 +36,13 @@ const getBaseGlobals = async () => {
   return {}
 }
 
-const isNodeSupported = async () => {
-  const { packageJson = {} } = (await readPackageUp()) ?? {}
-  const { engines = {} } = packageJson
+const isNodeSupported = () => {
+  const packageJsonPath = pkg.up()
+  if (!packageJsonPath) {
+    return false
+  }
 
+  const { engines = {} } = JSON.parse(fs.readFileSync(packageJsonPath))
   return Boolean(engines.node)
 }
 
@@ -49,12 +54,13 @@ const OFF = `off`
 export default [
   // All files
   {
-    languageOptions: { globals: await getBaseGlobals() },
+    languageOptions: { globals: getBaseGlobals() },
     plugins: {
       stylistic: stylisticPlugin,
       import: importPlugin,
       unicorn: unicornPlugin,
       security: securityPlugin,
+      depend: dependPlugin,
     },
     rules: {
       'array-callback-return': ERROR,
@@ -303,6 +309,8 @@ export default [
       'security/detect-buffer-noassert': ERROR,
       'security/detect-eval-with-expression': ERROR,
       'security/detect-unsafe-regex': ERROR,
+
+      'depend/ban-dependencies': ERROR,
     },
   },
 
