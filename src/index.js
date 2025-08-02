@@ -1,6 +1,5 @@
-import fs from 'node:fs'
 import tsEslint from 'typescript-eslint'
-import browserslist from 'browserslist'
+import gitignore from 'eslint-config-flat-gitignore'
 import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import markdownPlugin from 'eslint-plugin-markdown'
@@ -10,51 +9,18 @@ import reactHooksPlugin from 'eslint-plugin-react-hooks'
 import testingLibraryPlugin from 'eslint-plugin-testing-library'
 import tsDocPlugin from 'eslint-plugin-tsdoc'
 import unicornPlugin from 'eslint-plugin-unicorn'
-import globals from 'globals'
-import * as pkg from 'empathic/package'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 import commandPluginConfig from 'eslint-plugin-command/config'
 import vitestPlugin from '@vitest/eslint-plugin'
 import securityPlugin from 'eslint-plugin-security'
 
-const getBaseGlobals = () => {
-  const isNode = isNodeSupported()
-  const isBrowser = isBrowserSupported()
-
-  if (isNode && isBrowser) {
-    return globals[`shared-node-browser`]
-  }
-
-  if (isNode) {
-    return { ...globals.node, ...globals.worker }
-  }
-
-  if (isBrowser) {
-    return { ...globals.browser, ...globals.serviceworker }
-  }
-
-  return {}
-}
-
-const isNodeSupported = () => {
-  const packageJsonPath = pkg.up()
-  if (!packageJsonPath) {
-    return false
-  }
-
-  const { engines = {} } = JSON.parse(fs.readFileSync(packageJsonPath))
-  return Boolean(engines.node)
-}
-
-const isBrowserSupported = () => Boolean(browserslist.findConfig(process.cwd()))
-
 const ERROR = `error`
 const OFF = `off`
 
 export default [
+  gitignore(),
   // All files
   {
-    languageOptions: { globals: getBaseGlobals() },
     plugins: {
       stylistic: stylisticPlugin,
       import: importPlugin,
@@ -312,12 +278,6 @@ export default [
 
       'depend/ban-dependencies': ERROR,
     },
-  },
-
-  // Allow config files to access node globals regardless of package target.
-  {
-    files: [`**/*.config.{js,mjs,cjs,ts,mts,cts}`],
-    languageOptions: { globals: globals.node },
   },
 
   // TypeScript
