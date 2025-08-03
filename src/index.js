@@ -13,6 +13,7 @@ import stylisticPlugin from '@stylistic/eslint-plugin'
 import commandPluginConfig from 'eslint-plugin-command/config'
 import vitestPlugin from '@vitest/eslint-plugin'
 import securityPlugin from 'eslint-plugin-security'
+import globals from 'globals'
 
 const ERROR = `error`
 const OFF = `off`
@@ -21,6 +22,9 @@ export default [
   gitignore(),
   // All files
   {
+    languageOptions: {
+      globals: globals.node,
+    },
     plugins: {
       stylistic: stylisticPlugin,
       import: importPlugin,
