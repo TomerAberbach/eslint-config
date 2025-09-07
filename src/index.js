@@ -83,7 +83,16 @@ export default [
       'no-unsafe-negation': ERROR,
       'no-unsafe-optional-chaining': ERROR,
       'no-unused-private-class-members': ERROR,
-      'no-unused-vars': [ERROR, { ignoreRestSiblings: true }],
+      'no-unused-vars': [
+        ERROR,
+        {
+          ignoreRestSiblings: true,
+          varsIgnorePattern: `^_`,
+          argsIgnorePattern: `^_`,
+          caughtErrorsIgnorePattern: `^_`,
+          destructuredArrayIgnorePattern: `^_`,
+        },
+      ],
       'no-use-before-define': [
         ERROR,
         { functions: false, classes: false, variables: false },
@@ -430,7 +439,16 @@ export default [
       'no-unused-expressions': OFF,
       'typescript/no-unused-expressions': ERROR,
       'no-unused-vars': OFF,
-      'typescript/no-unused-vars': [ERROR, { ignoreRestSiblings: true }],
+      'typescript/no-unused-vars': [
+        ERROR,
+        {
+          ignoreRestSiblings: true,
+          varsIgnorePattern: `^_`,
+          argsIgnorePattern: `^_`,
+          caughtErrorsIgnorePattern: `^_`,
+          destructuredArrayIgnorePattern: `^_`,
+        },
+      ],
       'no-use-before-define': OFF,
       'typescript/no-use-before-define': [
         ERROR,
