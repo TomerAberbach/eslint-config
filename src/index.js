@@ -1,19 +1,19 @@
-import tsEslint from 'typescript-eslint'
+import markdownPlugin from '@eslint/markdown'
+import stylisticPlugin from '@stylistic/eslint-plugin'
+import vitestPlugin from '@vitest/eslint-plugin'
 import gitignore from 'eslint-config-flat-gitignore'
+import commandPluginConfig from 'eslint-plugin-command/config'
+import dependPlugin from 'eslint-plugin-depend'
 import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
-import markdownPlugin from '@eslint/markdown'
-import dependPlugin from 'eslint-plugin-depend'
 import reactPlugin from 'eslint-plugin-react' // eslint-disable-line depend/ban-dependencies
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import securityPlugin from 'eslint-plugin-security'
 import testingLibraryPlugin from 'eslint-plugin-testing-library'
 import tsDocPlugin from 'eslint-plugin-tsdoc'
 import unicornPlugin from 'eslint-plugin-unicorn'
-import stylisticPlugin from '@stylistic/eslint-plugin'
-import commandPluginConfig from 'eslint-plugin-command/config'
-import vitestPlugin from '@vitest/eslint-plugin'
-import securityPlugin from 'eslint-plugin-security'
 import globals from 'globals'
+import tsEslint from 'typescript-eslint'
 
 const ERROR = `error`
 const OFF = `off`
@@ -196,27 +196,48 @@ export default [
       'import/no-empty-named-blocks': ERROR,
       'import/no-useless-path-segments': ERROR,
       'import/consistent-type-specifier-style': [ERROR, `prefer-top-level`],
+      'import/extensions': [ERROR, `ignorePackages`],
       'import/first': ERROR,
       'import/newline-after-import': ERROR,
       'import/no-duplicates': ERROR,
-      'sort-imports': [ERROR, { ignoreDeclarationSort: true }],
-      'import/order': ERROR,
+      'sort-imports': [
+        ERROR,
+        {
+          ignoreCase: true,
+          // Handled by `import/order`
+          ignoreDeclarationSort: true,
+        },
+      ],
+      'import/order': [
+        ERROR,
+        {
+          alphabetize: {
+            order: `asc`,
+            caseInsensitive: true,
+          },
+          'newlines-between': `never`,
+        },
+      ],
 
       'unicorn/better-regex': ERROR,
       'unicorn/catch-error-name': ERROR,
+      'unicorn/consistent-date-clone': ERROR,
       'unicorn/consistent-destructuring': ERROR,
       'unicorn/consistent-empty-array-spread': ERROR,
+      'unicorn/consistent-existence-index-check': ERROR,
       'unicorn/custom-error-definition': ERROR,
       'unicorn/error-message': ERROR,
       'unicorn/escape-case': ERROR,
       'unicorn/filename-case': [ERROR, { case: `kebabCase`, ignore: [`\\$`] }],
       'unicorn/new-for-builtins': ERROR,
       'unicorn/no-abusive-eslint-disable': ERROR,
+      'unicorn/no-accessor-recursion': ERROR,
+      'unicorn/no-anonymous-default-export': ERROR,
       'unicorn/no-array-for-each': ERROR,
       'unicorn/no-await-in-promise-methods': ERROR,
       'unicorn/no-console-spaces': ERROR,
       'unicorn/no-for-loop': ERROR,
-      'unicorn/no-instanceof-array': ERROR,
+      'unicorn/no-instanceof-builtins': ERROR,
       'unicorn/no-lonely-if': ERROR,
       'unicorn/no-negated-condition': ERROR,
       'unicorn/no-negation-in-equality-check': ERROR,
@@ -227,6 +248,10 @@ export default [
       'unicorn/no-static-only-class': ERROR,
       'unicorn/no-thenable': ERROR,
       'unicorn/no-typeof-undefined': ERROR,
+      'unicorn/no-unnecessary-array-flat-depth': ERROR,
+      'unicorn/no-unnecessary-array-splice-count': ERROR,
+      'unicorn/no-unnecessary-await': ERROR,
+      'unicorn/no-unnecessary-slice-end': ERROR,
       'unicorn/no-unreadable-array-destructuring': ERROR,
       'unicorn/no-unreadable-iife': ERROR,
       'unicorn/no-useless-fallback-in-spread': ERROR,
@@ -243,22 +268,30 @@ export default [
       'unicorn/prefer-array-index-of': ERROR,
       'unicorn/prefer-array-some': ERROR,
       'unicorn/prefer-at': ERROR,
+      'unicorn/prefer-bigint-literals': ERROR,
       'unicorn/prefer-blob-reading-methods': ERROR,
+      'unicorn/prefer-code-point': ERROR,
       'unicorn/prefer-date-now': ERROR,
       'unicorn/prefer-default-parameters': ERROR,
       'unicorn/prefer-export-from': ERROR,
+      'unicorn/prefer-global-this': ERROR,
+      'unicorn/prefer-import-meta-properties': ERROR,
       'unicorn/prefer-includes': ERROR,
       'unicorn/prefer-logical-operator-over-ternary': ERROR,
+      'unicorn/prefer-math-min-max': ERROR,
       'unicorn/prefer-math-trunc': ERROR,
       'unicorn/prefer-modern-math-apis': ERROR,
       'unicorn/prefer-negative-index': ERROR,
       'unicorn/prefer-node-protocol': ERROR,
+      'unicorn/prefer-number-properties': ERROR,
       'unicorn/prefer-object-from-entries': ERROR,
       'unicorn/prefer-optional-catch-binding': ERROR,
       'unicorn/prefer-prototype-methods': ERROR,
+      'unicorn/prefer-reflect-apply': ERROR,
       'unicorn/prefer-regexp-test': ERROR,
       'unicorn/prefer-set-has': ERROR,
       'unicorn/prefer-set-size': ERROR,
+      'unicorn/prefer-spread': ERROR,
       'unicorn/prefer-string-raw': ERROR,
       'unicorn/prefer-string-replace-all': ERROR,
       'unicorn/prefer-string-slice': ERROR,
@@ -272,6 +305,7 @@ export default [
       'unicorn/require-array-join-separator': ERROR,
       'unicorn/require-number-to-fixed-digits-argument': ERROR,
       'unicorn/switch-case-braces': [ERROR, `avoid`],
+      'unicorn/template-indent': ERROR,
       'unicorn/text-encoding-identifier-case': ERROR,
       'unicorn/throw-new-error': ERROR,
 
@@ -321,6 +355,7 @@ export default [
       'typescript/array-type': ERROR,
       'typescript/await-thenable': ERROR,
       'typescript/ban-ts-comment': ERROR,
+      'typescript/ban-tslint-comment': ERROR,
       'class-methods-use-this': OFF,
       'typescript/class-literal-property-style': ERROR,
       'typescript/class-methods-use-this': ERROR,
@@ -366,6 +401,7 @@ export default [
       'typescript/no-meaningless-void-operator': ERROR,
       'typescript/no-misused-new': ERROR,
       'typescript/no-misused-promises': ERROR,
+      'typescript/no-misused-spread': ERROR,
       'typescript/no-mixed-enums': ERROR,
       'typescript/no-namespace': ERROR,
       'typescript/no-non-null-asserted-nullish-coalescing': ERROR,
