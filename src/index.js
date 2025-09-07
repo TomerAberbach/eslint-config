@@ -2,7 +2,7 @@ import tsEslint from 'typescript-eslint'
 import gitignore from 'eslint-config-flat-gitignore'
 import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
-import markdownPlugin from 'eslint-plugin-markdown'
+import markdownPlugin from '@eslint/markdown'
 import dependPlugin from 'eslint-plugin-depend'
 import reactPlugin from 'eslint-plugin-react' // eslint-disable-line depend/ban-dependencies
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
@@ -610,6 +610,26 @@ export default [
     files: [`**/*.md`],
     plugins: { markdown: markdownPlugin },
     processor: `markdown/markdown`,
+    rules: {
+      'markdown/fenced-code-language': ERROR,
+      'markdown/heading-increment': ERROR,
+      'markdown/no-bare-urls': ERROR,
+      'markdown/no-duplicate-definitions': ERROR,
+      'markdown/no-duplicate-headings': ERROR,
+      'markdown/no-empty-definitions': ERROR,
+      'markdown/no-empty-images': ERROR,
+      'markdown/no-empty-links': ERROR,
+      'markdown/no-invalid-label-refs': ERROR,
+      'markdown/no-missing-atx-heading-space': ERROR,
+      'markdown/no-missing-label-refs': ERROR,
+      'markdown/no-missing-link-fragments': ERROR,
+      'markdown/no-multiple-h1': ERROR,
+      'markdown/no-reversed-media-syntax': ERROR,
+      'markdown/no-space-in-emphasis': ERROR,
+      'markdown/no-unused-definitions': ERROR,
+      'markdown/require-alt-text': ERROR,
+      'markdown/table-column-count': ERROR,
+    },
   },
 
   // Markdown code blocks
