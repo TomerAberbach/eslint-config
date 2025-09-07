@@ -96,7 +96,7 @@ export default [
       'capitalized-comments': [
         ERROR,
         `always`,
-        { ignoreConsecutiveComments: true },
+        { ignoreConsecutiveComments: true, ignorePattern: `\\s*c8\\s` },
       ],
       'class-methods-use-this': ERROR,
       'consistent-return': [ERROR, { treatUndefinedAsUnspecified: false }],
