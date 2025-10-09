@@ -12,13 +12,14 @@ import securityPlugin from 'eslint-plugin-security'
 import testingLibraryPlugin from 'eslint-plugin-testing-library'
 import tsDocPlugin from 'eslint-plugin-tsdoc'
 import unicornPlugin from 'eslint-plugin-unicorn'
+import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 import tsEslint from 'typescript-eslint'
 
 const ERROR = `error`
 const OFF = `off`
 
-export default [
+export default defineConfig([
   gitignore(),
   // All files
   {
@@ -689,6 +690,12 @@ export default [
   // Markdown code blocks
   {
     files: [`**/*.md/*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}`],
+    // https://github.com/eslint/markdown/issues/114
+    languageOptions: {
+      parserOptions: {
+        project: null,
+      },
+    },
     rules: {
       // Not useful for code examples.
       'no-undef': OFF,
@@ -697,4 +704,4 @@ export default [
   },
 
   commandPluginConfig(),
-]
+])
