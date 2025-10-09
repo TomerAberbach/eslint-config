@@ -693,14 +693,6 @@ export default defineConfig([
   // Markdown code blocks
   {
     files: [`**/*.md/*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}`],
-    // LanguageOptions: {
-    //   parserOptions: {
-    //     project: false,
-    //     // projectService: {
-    //     //   allowDefaultProject: [`*.md/*.ts`],
-    //     // },
-    //   },
-    // },
     rules: {
       // Not useful for code examples.
       'no-undef': OFF,
