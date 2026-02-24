@@ -119,6 +119,7 @@ export default defineConfig([
       'func-names': [ERROR, `never`],
       'func-style': [ERROR, `declaration`, { allowArrowFunctions: true }],
       'guard-for-in': ERROR,
+      'id-length': [`error`, { min: 2, exceptions: [`i`, `j`, `k`] }],
       'logical-assignment-operators': ERROR,
       'new-cap': ERROR,
       'no-array-constructor': ERROR,
