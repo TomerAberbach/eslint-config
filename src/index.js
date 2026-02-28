@@ -121,7 +121,25 @@ export default defineConfig([
       'guard-for-in': ERROR,
       'id-length': [
         `error`,
-        { min: 2, exceptions: [`i`, `j`, `k`, `x`, `y`, `z`] },
+        {
+          min: 2,
+          exceptions: [
+            // For ignoring variables.
+            `_`,
+            // For `zx`, `execa`, etc.
+            `$`,
+            // For events and exceptions.
+            `e`,
+            // For loop indices.
+            `i`,
+            `j`,
+            `k`,
+            // For coordinates.
+            `x`,
+            `y`,
+            `z`,
+          ],
+        },
       ],
       'logical-assignment-operators': ERROR,
       'new-cap': ERROR,
