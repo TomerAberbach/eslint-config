@@ -44,20 +44,20 @@
   "dependencies": {
     "@eslint/markdown": "^8.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@vitest/eslint-plugin": "^1.6.14",
+    "@vitest/eslint-plugin": "^1.6.17",
     "eslint-config-flat-gitignore": "^2.3.0",
     "eslint-plugin-command": "^3.5.2",
     "eslint-plugin-depend": "^1.5.0",
     "eslint-plugin-import-x": "^4.16.2",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-security": "^4.0.0",
     "eslint-plugin-testing-library": "^7.16.2",
     "eslint-plugin-tsdoc": "^0.5.2",
     "eslint-plugin-unicorn": "^64.0.0",
-    "globals": "^17.4.0",
-    "typescript-eslint": "^8.58.0"
+    "globals": "^17.6.0",
+    "typescript-eslint": "^8.59.3"
   },
   "peerDependencies": {
     "eslint": "^10",
@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@tomer/prettier-config": "^4.0.1",
-    "eslint": "^10.2.0",
-    "prettier": "^3.8.1"
+    "eslint": "^10.4.0",
+    "prettier": "^3.8.3"
   }
 }
