@@ -42,7 +42,13 @@ export const lintFile = async (
   const eslint = new ESLint({
     cwd,
     overrideConfigFile: true,
-    overrideConfig: config,
+    overrideConfig: [
+      ...config,
+      // Defaults to the process's working directory, which is this repository.
+      // typescript-eslint stops looking for a tsconfig.json above a file once
+      // the directory's path is shorter than this one
+      { languageOptions: { parserOptions: { tsconfigRootDir: cwd } } },
+    ],
   })
   return ruleIdsOf(await eslint.lintFiles([path]))
 }

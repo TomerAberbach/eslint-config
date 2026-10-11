@@ -13,6 +13,10 @@ const execFileAsync = promisify(execFile)
 const rootDir = join(import.meta.dirname, `..`)
 let cwd: string
 
+// Each test spawns ESLint or tsc in the installed project, which takes a few
+// seconds on slower CI runners
+const subprocessTimeout = 30_000
+
 // Building, packing, and installing the package takes a few seconds, so the
 // tests share one project
 beforeAll(async () => {
@@ -45,51 +49,59 @@ beforeAll(async () => {
 
 afterAll(() => rm(cwd, { recursive: true, force: true }))
 
-test(`the packed package lints a project that installs it`, async () => {
-  await writeFiles(cwd, {
-    'index.js': `var x = 1\nexport default x\n`,
-    'index.tsx': `export const App = () => <div></div>\n`,
-  })
+test(
+  `the packed package lints a project that installs it`,
+  { timeout: subprocessTimeout },
+  async () => {
+    await writeFiles(cwd, {
+      'index.js': `var x = 1\nexport default x\n`,
+      'index.tsx': `export const App = () => <div></div>\n`,
+    })
 
-  const { status, stdout } = await runPnpmExec([
-    `eslint`,
-    `--format`,
-    `json`,
-    `index.js`,
-    `index.tsx`,
-  ])
+    const { status, stdout } = await runPnpmExec([
+      `eslint`,
+      `--format`,
+      `json`,
+      `index.js`,
+      `index.tsx`,
+    ])
 
-  // ESLint exits with 1 for lint errors and 2 for a crash
-  expect(status).toBe(1)
-  const ruleIds = ruleIdsOf(JSON.parse(stdout) as ESLint.LintResult[])
-  expect(ruleIds).toStrictEqual(
-    expect.arrayContaining([`no-var`, `stylistic/jsx-self-closing-comp`]),
-  )
-})
+    // ESLint exits with 1 for lint errors and 2 for a crash
+    expect(status).toBe(1)
+    const ruleIds = ruleIdsOf(JSON.parse(stdout) as ESLint.LintResult[])
+    expect(ruleIds).toStrictEqual(
+      expect.arrayContaining([`no-var`, `stylistic/jsx-self-closing-comp`]),
+    )
+  },
+)
 
-test(`the packed package typechecks in a TypeScript config`, async () => {
-  // Named so ESLint doesn't load it in place of `eslint.config.js`
-  await writeFiles(cwd, {
-    'typed-eslint-config.ts': `import config from '@tomer/eslint-config'
+test(
+  `the packed package typechecks in a TypeScript config`,
+  { timeout: subprocessTimeout },
+  async () => {
+    // Named so ESLint doesn't load it in place of `eslint.config.js`
+    await writeFiles(cwd, {
+      'typed-eslint-config.ts': `import config from '@tomer/eslint-config'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([...config, { ignores: [\`dist\`] }])
 `,
-  })
+    })
 
-  const { status, stdout } = await runPnpmExec([
-    `tsc`,
-    `--ignoreConfig`,
-    `--noEmit`,
-    `--strict`,
-    `--skipLibCheck`,
-    `--module`,
-    `nodenext`,
-    `typed-eslint-config.ts`,
-  ])
+    const { status, stdout } = await runPnpmExec([
+      `tsc`,
+      `--ignoreConfig`,
+      `--noEmit`,
+      `--strict`,
+      `--skipLibCheck`,
+      `--module`,
+      `nodenext`,
+      `typed-eslint-config.ts`,
+    ])
 
-  expect({ status, stdout }).toStrictEqual({ status: 0, stdout: `` })
-})
+    expect({ status, stdout }).toStrictEqual({ status: 0, stdout: `` })
+  },
+)
 
 const runPnpmExec = (args: string[]) =>
   execFileAsync(`pnpm`, [`exec`, ...args], { cwd }).then(
