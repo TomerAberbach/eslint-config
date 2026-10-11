@@ -11,7 +11,7 @@ eslint-config
 │   ├── index.test.ts         # Tests that lint sample files with the config
 │   ├── package.test.ts       # Builds, packs, and installs the package in a fresh project, then lints and typechecks with it
 │   ├── react.test.ts         # React version detection, which needs its own test file
-│   └── lint-file.ts          # Lints a file in a temporary project
+│   └── testing.ts            # Test helpers: temporary projects and linting a file in one
 │
 └── .claude/
     └── hooks/lint-format.sh  # Lints and formats each written file

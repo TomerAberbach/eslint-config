@@ -1,7 +1,10 @@
 import { ESLint } from 'eslint'
 import { expect, test } from 'vitest'
 import config from './index.ts'
-import { lintFile } from './lint-file.ts'
+import { lintFile } from './testing.ts'
+
+const unclosedDivCode = `export const App = () => <div></div>\n`
+const itTestCode = `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`
 
 test.each([
   {
@@ -31,31 +34,31 @@ test.each([
   {
     name: `an unclosed empty element in JSX`,
     path: `index.jsx`,
-    code: `export const App = () => <div></div>\n`,
+    code: unclosedDivCode,
     ruleId: `react/self-closing-comp`,
   },
   {
     name: `an unclosed empty element in TSX`,
     path: `index.tsx`,
-    code: `export const App = () => <div></div>\n`,
+    code: unclosedDivCode,
     ruleId: `react/self-closing-comp`,
   },
   {
     name: `it in a test directory`,
     path: `test/index.js`,
-    code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
+    code: itTestCode,
     ruleId: `vitest/consistent-test-it`,
   },
   {
     name: `it in a colocated test file`,
     path: `src/index.test.ts`,
-    code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
+    code: itTestCode,
     ruleId: `vitest/consistent-test-it`,
   },
   {
     name: `it in a colocated spec file`,
     path: `src/index.spec.js`,
-    code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
+    code: itTestCode,
     ruleId: `vitest/consistent-test-it`,
   },
 ])(`reports $name`, async ({ path, code, ruleId }) => {

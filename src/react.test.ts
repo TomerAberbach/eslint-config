@@ -2,7 +2,7 @@
 // the whole process. Vitest isolates modules per test file, so this test needs a
 // file without other React tests
 import { expect, test } from 'vitest'
-import { lintFile } from './lint-file.ts'
+import { lintFile } from './testing.ts'
 
 test(`detects the installed React version`, async () => {
   // `ReactDOM.render` is deprecated as of React 18. The React plugin assumes
