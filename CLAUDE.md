@@ -9,6 +9,7 @@ eslint-config
 ├── src/
 │   ├── index.js              # The config: one block per file type
 │   ├── index.test.js         # Tests that lint sample files with the config
+│   ├── package.test.js       # Lints with the packed package installed in a fresh project
 │   ├── react.test.js         # React version detection, which needs its own test file
 │   └── lint-file.js          # Lints a file in a temporary project
 │
