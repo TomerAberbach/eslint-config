@@ -3,16 +3,18 @@ import { mkdtemp, rm, writeFile } from 'node:fs/promises'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import type { ESLint } from 'eslint'
+import { build } from 'tsdown'
 import { afterAll, beforeAll, expect, test } from 'vitest'
 import packageJson from '../package.json' with { type: 'json' }
 
 let cwd: string
 
-// Installing the packed package takes a few seconds, so the tests share one
-// project
+// Building, packing, and installing the package takes a few seconds, so the
+// tests share one project
 beforeAll(async () => {
+  await build()
   cwd = await mkdtemp(join(tmpdir(), `eslint-config-`))
-  const { stdout: packOutput } = await run(
+  const { stdout: packOutput } = await runSuccessfully(
     `pnpm`,
     [`pack`, `--pack-destination`, cwd, `--json`],
     join(import.meta.dirname, `..`),
@@ -29,15 +31,15 @@ beforeAll(async () => {
     }),
     'pnpm-workspace.yaml': `allowBuilds:\n  unrs-resolver: true\n`,
     'tsconfig.json': JSON.stringify({ compilerOptions: { jsx: `react-jsx` } }),
+    'eslint.config.js': `export { default } from '@tomer/eslint-config'\n`,
   })
-  await run(`pnpm`, [`install`, `--prefer-offline`], cwd)
+  await runSuccessfully(`pnpm`, [`install`, `--prefer-offline`], cwd)
 }, 60_000)
 
 afterAll(() => rm(cwd, { recursive: true, force: true }))
 
 test(`the packed package lints a project that installs it`, async () => {
   await writeFiles({
-    'eslint.config.js': `export { default } from '@tomer/eslint-config'\n`,
     'index.js': `var x = 1\nexport default x\n`,
     'index.tsx': `export const App = () => <div></div>\n`,
   })
@@ -59,8 +61,9 @@ test(`the packed package lints a project that installs it`, async () => {
 })
 
 test(`the packed package typechecks in a TypeScript config`, async () => {
+  // Named so ESLint doesn't load it in place of `eslint.config.js`
   await writeFiles({
-    'eslint.config.ts': `import config from '@tomer/eslint-config'
+    'typed-eslint-config.ts': `import config from '@tomer/eslint-config'
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([...config, { ignores: [\`dist\`] }])
@@ -78,7 +81,7 @@ export default defineConfig([...config, { ignores: [\`dist\`] }])
       `--skipLibCheck`,
       `--module`,
       `nodenext`,
-      `eslint.config.ts`,
+      `typed-eslint-config.ts`,
     ],
     cwd,
   )
@@ -86,16 +89,38 @@ export default defineConfig([...config, { ignores: [\`dist\`] }])
   expect({ status, stdout }).toStrictEqual({ status: 0, stdout: `` })
 })
 
+type RunResult = { status: number | null; stdout: string; stderr: string }
+
 const run = (command: string, args: string[], cwd: string) =>
-  new Promise<{ status: number | null; stdout: string }>((resolve, reject) => {
+  new Promise<RunResult>((resolve, reject) => {
     const child = spawn(command, args, { cwd })
     const stdout: Buffer[] = []
+    const stderr: Buffer[] = []
     child.stdout.on(`data`, (chunk: Buffer) => stdout.push(chunk))
+    child.stderr.on(`data`, (chunk: Buffer) => stderr.push(chunk))
     child.on(`error`, reject)
     child.on(`close`, status =>
-      resolve({ status, stdout: Buffer.concat(stdout).toString(`utf8`) }),
+      resolve({
+        status,
+        stdout: Buffer.concat(stdout).toString(`utf8`),
+        stderr: Buffer.concat(stderr).toString(`utf8`),
+      }),
     )
   })
+
+const runSuccessfully = async (
+  command: string,
+  args: string[],
+  cwd: string,
+): Promise<RunResult> => {
+  const result = await run(command, args, cwd)
+  if (result.status !== 0) {
+    throw new Error(
+      `\`${[command, ...args].join(` `)}\` exited with ${result.status}:\n${result.stderr}`,
+    )
+  }
+  return result
+}
 
 const writeFiles = (files: Record<string, string>) =>
   Promise.all(

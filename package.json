@@ -52,7 +52,7 @@
     "test": "vitest",
     "coverage": "vitest --coverage",
     "build": "tsdown",
-    "check": "npm-run-all -c -l -s build -p typecheck \"lint --no-fix\" \"format --no-write --check\" knip \"test --run\"",
+    "check": "run-p -c -l typecheck \"lint --no-fix\" \"format --no-write --check\" knip \"test --run\"",
     "prepublishOnly": "pnpm build"
   },
   "prettier": "@tomer/prettier-config",
