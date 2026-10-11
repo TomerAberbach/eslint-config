@@ -247,7 +247,6 @@ export default defineConfig([
         },
       ],
 
-      'unicorn/better-regex': ERROR,
       'unicorn/catch-error-name': ERROR,
       'unicorn/consistent-date-clone': ERROR,
       'unicorn/consistent-destructuring': ERROR,
