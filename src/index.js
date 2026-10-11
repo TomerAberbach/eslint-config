@@ -651,7 +651,7 @@ export default defineConfig([
   },
 
   {
-    files: [`test/**/*`],
+    files: [`test/**/*`, `**/*.{test,spec}.*`],
     plugins: {
       vitest: vitestPlugin,
       'testing-library': testingLibraryPlugin,

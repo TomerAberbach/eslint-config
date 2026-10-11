@@ -38,6 +38,18 @@ test.each([
     code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
     ruleId: `vitest/consistent-test-it`,
   },
+  {
+    name: `it in a colocated test file`,
+    path: `src/index.test.ts`,
+    code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
+    ruleId: `vitest/consistent-test-it`,
+  },
+  {
+    name: `it in a colocated spec file`,
+    path: `src/index.spec.js`,
+    code: `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`,
+    ruleId: `vitest/consistent-test-it`,
+  },
 ])(`reports $name`, async ({ path, code, ruleId }) => {
   const ruleIds = await lintFile(path, code)
 
