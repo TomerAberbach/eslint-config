@@ -676,9 +676,22 @@ export default defineConfig([
       vitest: vitestPlugin,
       'testing-library': testingLibraryPlugin,
     },
+    // Treats `test` from @fast-check/vitest as Vitest's, so rules that look
+    // for tests recognize it
+    settings: { vitest: { vitestImports: [`@fast-check/vitest`] } },
     rules: {
       'vitest/consistent-test-it': [ERROR, { fn: `test` }],
-      'vitest/expect-expect': ERROR,
+      'vitest/expect-expect': [
+        ERROR,
+        {
+          assertFunctionNames: [
+            `expect`,
+            `expectTypeOf`,
+            `assert`,
+            `assertType`,
+          ],
+        },
+      ],
       'vitest/no-alias-methods': ERROR,
       'vitest/no-commented-out-tests': ERROR,
       'vitest/no-identical-title': ERROR,

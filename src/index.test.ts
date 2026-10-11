@@ -41,6 +41,17 @@ export const OnlineStatus = () => {
   return <p>{String(isOnline)}</p>
 }
 `
+const fastCheckDuplicateTitleCode = `import { test } from '@fast-check/vitest'
+import { expect } from 'vitest'
+
+test('works', () => {
+  expect(1).toBe(1)
+})
+
+test('works', () => {
+  expect(2).toBe(2)
+})
+`
 const itTestCode = `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`
 
 test.each([
@@ -116,6 +127,12 @@ test.each([
     code: itTestCode,
     ruleId: `vitest/consistent-test-it`,
   },
+  {
+    name: `a duplicate title in a test from @fast-check/vitest`,
+    path: `src/index.test.js`,
+    code: fastCheckDuplicateTitleCode,
+    ruleId: `vitest/no-identical-title`,
+  },
 ])(`reports $name`, async ({ path, code, ruleId }) => {
   const ruleIds = await lintFile(path, code)
 
@@ -135,3 +152,16 @@ test.each([`src/index.test.ts.snap`, `src/fixture.test.yaml`])(
     expect(fileConfig).toBeUndefined()
   },
 )
+
+test(`doesn't report a test whose only assertions are expectTypeOf calls`, async () => {
+  const typeOnlyTestCode = `import { expectTypeOf, test } from 'vitest'
+
+test('types', () => {
+  expectTypeOf(1).toEqualTypeOf(2)
+})
+`
+
+  const ruleIds = await lintFile(`src/index.test.js`, typeOnlyTestCode)
+
+  expect(ruleIds).not.toContain(`vitest/expect-expect`)
+})
