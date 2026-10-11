@@ -21,6 +21,12 @@ test.each([
     ruleId: `no-var`,
   },
   {
+    name: `an inferrable type in a Markdown TypeScript code block`,
+    path: `readme.md`,
+    code: `# Title\n\n\`\`\`ts\nconst x: number = 1\n\`\`\`\n`,
+    ruleId: `@typescript-eslint/no-inferrable-types`,
+  },
+  {
     name: `an unclosed empty element in JSX`,
     path: `index.jsx`,
     code: `export const App = () => <div></div>\n`,
