@@ -21,7 +21,7 @@ const ERROR = `error`
 const OFF = `off`
 
 export default defineConfig([
-  gitignore(),
+  gitignore({ strict: false }),
   // All files
   {
     languageOptions: {
