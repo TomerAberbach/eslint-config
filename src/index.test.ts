@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest'
-import { lintFile } from './lint-file.js'
+import { lintFile } from './lint-file.ts'
 
 test.each([
   {

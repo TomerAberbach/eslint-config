@@ -566,7 +566,12 @@ export default defineConfig([
       // Restores context methods ESLint 10 removed, which the React version
       // detection calls
       react: fixupPluginRules(reactPlugin),
-      'react-hooks': reactHooksPlugin,
+      // Omits the plugin's `configs`, whose types don't match ESLint's
+      // `Plugin` type
+      'react-hooks': {
+        meta: reactHooksPlugin.meta,
+        rules: reactHooksPlugin.rules,
+      },
       'jsx-a11y': jsxA11yPlugin,
     },
     rules: {

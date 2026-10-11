@@ -3,9 +3,13 @@ import { tmpdir } from 'node:os'
 import { dirname, join } from 'node:path'
 import { ESLint } from 'eslint'
 import { onTestFinished } from 'vitest'
-import config from './index.js'
+import config from './index.ts'
 
-export const lintFile = async (path, code, otherFiles = {}) => {
+export const lintFile = async (
+  path: string,
+  code: string,
+  otherFiles: Record<string, string> = {},
+): Promise<(string | null)[]> => {
   const cwd = await mkdtemp(join(tmpdir(), `eslint-config-`))
   onTestFinished(() => rm(cwd, { recursive: true, force: true }))
   await writeFile(join(cwd, `package.json`), JSON.stringify({ type: `module` }))
@@ -24,6 +28,6 @@ export const lintFile = async (path, code, otherFiles = {}) => {
     overrideConfigFile: true,
     overrideConfig: config,
   })
-  const [{ messages }] = await eslint.lintFiles([path])
-  return messages.map(({ ruleId }) => ruleId)
+  const results = await eslint.lintFiles([path])
+  return results.flatMap(({ messages }) => messages.map(({ ruleId }) => ruleId))
 }
