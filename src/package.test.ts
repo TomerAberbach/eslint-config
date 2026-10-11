@@ -63,7 +63,7 @@ test(`the packed package lints a project that installs it`, async () => {
   expect(status).toBe(1)
   const ruleIds = ruleIdsOf(JSON.parse(stdout) as ESLint.LintResult[])
   expect(ruleIds).toStrictEqual(
-    expect.arrayContaining([`no-var`, `react/self-closing-comp`]),
+    expect.arrayContaining([`no-var`, `stylistic/jsx-self-closing-comp`]),
   )
 })
 

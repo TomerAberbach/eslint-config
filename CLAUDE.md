@@ -9,7 +9,6 @@ eslint-config
 ├── src/
 │   ├── index.ts              # The config: one block per file type
 │   ├── package.test.ts       # Builds, packs, and installs the package in a fresh project, then lints and typechecks with it
-│   ├── react.test.ts         # React version detection, which needs its own test file
 │   └── testing.ts            # Test helpers: temporary projects and linting a file in one
 │
 └── .claude/

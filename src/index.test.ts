@@ -95,13 +95,13 @@ test.each([
     name: `an unclosed empty element in JSX`,
     path: `index.jsx`,
     code: unclosedDivCode,
-    ruleId: `react/self-closing-comp`,
+    ruleId: `stylistic/jsx-self-closing-comp`,
   },
   {
     name: `an unclosed empty element in TSX`,
     path: `index.tsx`,
     code: unclosedDivCode,
-    ruleId: `react/self-closing-comp`,
+    ruleId: `stylistic/jsx-self-closing-comp`,
   },
   {
     name: `state derived in an effect`,
@@ -157,6 +157,48 @@ test.each([
     code: devDependencyImportCode,
     otherFiles: devDependencyFiles,
     ruleId: `import/no-extraneous-dependencies`,
+  },
+  {
+    name: `a regex with exponential backtracking`,
+    path: `index.js`,
+    code: `export const regex = /^(?:a+)+$/u\n`,
+    ruleId: `regexp/no-super-linear-backtracking`,
+  },
+  {
+    name: `a deprecated Node.js API`,
+    path: `index.js`,
+    code: `import { parse } from 'node:url'\n\nexport const url = parse(\`https://example.com\`)\n`,
+    ruleId: `node/no-deprecated-api`,
+  },
+  {
+    name: `a Node.js API newer than the engines field allows`,
+    path: `index.js`,
+    code: `export const directory = import.meta.dirname\n`,
+    otherFiles: {
+      'package.json': JSON.stringify({
+        type: `module`,
+        engines: { node: `>= 22` },
+      }),
+    },
+    ruleId: `node/no-unsupported-features/node-builtins`,
+  },
+  {
+    name: `an eslint-enable comment with nothing to enable`,
+    path: `index.js`,
+    code: `/* eslint-enable no-var */\nexport const x = 1\n`,
+    ruleId: `eslint-comments/no-unused-enable`,
+  },
+  {
+    name: `a button without a type`,
+    path: `index.jsx`,
+    code: `export const App = () => <button>Hi</button>\n`,
+    ruleId: `@eslint-react/dom-no-missing-button-type`,
+  },
+  {
+    name: `a number rendered by a conditional in TSX`,
+    path: `index.tsx`,
+    code: `export const App = ({ count }: { count: number }) => (\n  <div>{count && <span />}</div>\n)\n`,
+    ruleId: `@eslint-react/no-leaked-conditional-rendering`,
   },
 ])(`reports $name`, async ({ path, code, otherFiles, ruleId }) => {
   const ruleIds = await lintFile(path, code, otherFiles)
