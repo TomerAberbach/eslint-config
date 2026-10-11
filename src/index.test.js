@@ -1,27 +1,5 @@
-import { mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises'
-import { tmpdir } from 'node:os'
-import { dirname, join } from 'node:path'
-import { ESLint } from 'eslint'
-import { expect, onTestFinished, test } from 'vitest'
-import config from './index.js'
-
-const lintFile = async (path, code) => {
-  const cwd = await mkdtemp(join(tmpdir(), `eslint-config-`))
-  onTestFinished(() => rm(cwd, { recursive: true, force: true }))
-  await writeFile(join(cwd, `package.json`), JSON.stringify({ type: `module` }))
-  const tsConfig = { compilerOptions: { strict: true, jsx: `react-jsx` } }
-  await writeFile(join(cwd, `tsconfig.json`), JSON.stringify(tsConfig))
-  await mkdir(dirname(join(cwd, path)), { recursive: true })
-  await writeFile(join(cwd, path), code)
-
-  const eslint = new ESLint({
-    cwd,
-    overrideConfigFile: true,
-    overrideConfig: config,
-  })
-  const [{ messages }] = await eslint.lintFiles([path])
-  return messages.map(({ ruleId }) => ruleId)
-}
+import { expect, test } from 'vitest'
+import { lintFile } from './lint-file.js'
 
 test.each([
   {
@@ -41,6 +19,18 @@ test.each([
     path: `readme.md`,
     code: `# Title\n\n\`\`\`js\nvar x = 1\n\`\`\`\n`,
     ruleId: `no-var`,
+  },
+  {
+    name: `an unclosed empty element in JSX`,
+    path: `index.jsx`,
+    code: `export const App = () => <div></div>\n`,
+    ruleId: `react/self-closing-comp`,
+  },
+  {
+    name: `an unclosed empty element in TSX`,
+    path: `index.tsx`,
+    code: `export const App = () => <div></div>\n`,
+    ruleId: `react/self-closing-comp`,
   },
   {
     name: `it in a test directory`,

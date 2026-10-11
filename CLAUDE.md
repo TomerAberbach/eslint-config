@@ -8,7 +8,9 @@ My ESLint configuration!
 eslint-config
 ├── src/
 │   ├── index.js              # The config: one block per file type
-│   └── index.test.js         # Tests that lint sample files with the config
+│   ├── index.test.js         # Tests that lint sample files with the config
+│   ├── react.test.js         # React version detection, which needs its own test file
+│   └── lint-file.js          # Lints a file in a temporary project
 │
 └── .claude/
     └── hooks/lint-format.sh  # Lints and formats each written file

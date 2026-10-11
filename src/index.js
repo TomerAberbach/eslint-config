@@ -1,3 +1,4 @@
+import { fixupPluginRules } from '@eslint/compat'
 import markdownPlugin from '@eslint/markdown'
 import stylisticPlugin from '@stylistic/eslint-plugin'
 import vitestPlugin from '@vitest/eslint-plugin'
@@ -562,7 +563,9 @@ export default defineConfig([
     },
     settings: { react: { version: `detect` } },
     plugins: {
-      react: reactPlugin,
+      // Restores context methods ESLint 10 removed, which the React version
+      // detection calls
+      react: fixupPluginRules(reactPlugin),
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
     },
