@@ -8,7 +8,6 @@ My ESLint configuration!
 eslint-config
 ├── src/
 │   ├── index.ts              # The config: one block per file type
-│   ├── index.test.ts         # Tests that lint sample files with the config
 │   ├── package.test.ts       # Builds, packs, and installs the package in a fresh project, then lints and typechecks with it
 │   ├── react.test.ts         # React version detection, which needs its own test file
 │   └── testing.ts            # Test helpers: temporary projects and linting a file in one
@@ -19,18 +18,7 @@ eslint-config
 
 ## Development
 
-```sh
-# Everything CI runs. Run before handing work back
-pnpm check
-
-pnpm format
-pnpm lint      # Lints this repository with its own config, loaded from src/index.ts
-pnpm typecheck
-pnpm knip      # Find unused files, dependencies, and exports
-pnpm test
-pnpm coverage
-pnpm build     # Bundle with tsdown
-```
+Run `pnpm check`, which is what CI runs, before handing work back.
 
 ## Config
 
@@ -39,11 +27,22 @@ pnpm build     # Bundle with tsdown
 - The published types contain only ESLint's own config type. Don't export a
   plugin's types, because `eslint` is the only dependency consumers install
   themselves
+- A change that makes the config report errors on code it accepted before is
+  breaking. Mark its commit with `!`, as in `feat!:`
 
 ## Testing
 
-- Uses `vitest`
 - Each test in `index.test.ts` writes a sample file to a temporary project and
   asserts which rules the config reports on it. Add a test when adding a block
   for a file type, because `pnpm lint` only exercises the blocks this
   repository's own files match
+
+## Dependencies
+
+- Keep `typescript` on 6 until typescript-eslint supports 7
+  (typescript-eslint#10940)
+- Keep `@types/node` on the major of the minimum Node.js version in `engines`
+- pnpm hides versions younger than its minimum release age from `pnpm outdated`
+  and rejects them in a frozen install. Installing one explicitly adds it to
+  `minimumReleaseAgeExclude` in `pnpm-workspace.yaml`. Keep that entry until the
+  version passes the cutoff
