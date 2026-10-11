@@ -552,6 +552,26 @@ export default defineConfig([
     },
   },
 
+  // React hooks, including custom hooks outside of JSX files
+  {
+    files: [`**/*.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}`],
+    plugins: {
+      // Omits the plugin's `configs`, whose types don't match ESLint's
+      // `Plugin` type
+      'react-hooks': {
+        meta: reactHooksPlugin.meta,
+        rules: reactHooksPlugin.rules,
+      },
+      'react-you-might-not-need-an-effect': reactYouMightNotNeedAnEffectPlugin,
+    },
+    rules: {
+      'react-hooks/rules-of-hooks': ERROR,
+      'react-hooks/exhaustive-deps': ERROR,
+
+      ...reactYouMightNotNeedAnEffectPlugin.configs.strict.rules,
+    },
+  },
+
   // React
   {
     files: [`**/*.{jsx,mjsx,cjsx,tsx,mtsx,ctsx}`],
@@ -567,14 +587,7 @@ export default defineConfig([
       // Restores context methods ESLint 10 removed, which the React version
       // detection calls
       react: fixupPluginRules(reactPlugin),
-      // Omits the plugin's `configs`, whose types don't match ESLint's
-      // `Plugin` type
-      'react-hooks': {
-        meta: reactHooksPlugin.meta,
-        rules: reactHooksPlugin.rules,
-      },
       'jsx-a11y': jsxA11yPlugin,
-      'react-you-might-not-need-an-effect': reactYouMightNotNeedAnEffectPlugin,
     },
     rules: {
       // It's common to need to throw non-Errors in React.
@@ -603,11 +616,6 @@ export default defineConfig([
       'react/no-unknown-property': ERROR,
       'react/self-closing-comp': ERROR,
       'react/void-dom-elements-no-children': ERROR,
-
-      'react-hooks/rules-of-hooks': ERROR,
-      'react-hooks/exhaustive-deps': ERROR,
-
-      ...reactYouMightNotNeedAnEffectPlugin.configs.strict.rules,
 
       'jsx-a11y/alt-text': ERROR,
       'jsx-a11y/anchor-ambiguous-text': ERROR,

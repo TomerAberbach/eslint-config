@@ -14,6 +14,16 @@ export const FullName = ({ first, last }) => {
   return <p>{fullName}</p>
 }
 `
+const derivedStateHookCode = `import { useEffect, useState } from 'react'
+
+export const useFullName = (first: string, last: string): string => {
+  const [fullName, setFullName] = useState(\`\`)
+  useEffect(() => {
+    setFullName(\`\${first} \${last}\`)
+  }, [first, last])
+  return fullName
+}
+`
 const onlineStatusCode = `import { useEffect, useState } from 'react'
 
 export const OnlineStatus = () => {
@@ -74,6 +84,12 @@ test.each([
     name: `state derived in an effect`,
     path: `index.jsx`,
     code: derivedStateCode,
+    ruleId: `react-you-might-not-need-an-effect/no-derived-state`,
+  },
+  {
+    name: `state derived in an effect in a custom hook outside of JSX`,
+    path: `use-full-name.ts`,
+    code: derivedStateHookCode,
     ruleId: `react-you-might-not-need-an-effect/no-derived-state`,
   },
   {
