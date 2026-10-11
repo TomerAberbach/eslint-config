@@ -11,7 +11,7 @@ export const FullName = ({ first, last }) => {
   useEffect(() => {
     setFullName(\`\${first} \${last}\`)
   }, [first, last])
-  return <p>{fullName}</p>
+  return fullName
 }
 `
 const derivedStateHookCode = `import { useEffect, useState } from 'react'
@@ -52,6 +52,18 @@ test('works', () => {
   expect(2).toBe(2)
 })
 `
+const devDependencyImportCode = `import dev from 'dev-only'\n\nexport default dev\n`
+const devDependencyFiles = {
+  'package.json': JSON.stringify({
+    type: `module`,
+    devDependencies: { 'dev-only': `1.0.0` },
+  }),
+  'node_modules/dev-only/package.json': JSON.stringify({
+    name: `dev-only`,
+    main: `index.js`,
+  }),
+  'node_modules/dev-only/index.js': `module.exports = {}\n`,
+}
 const itTestCode = `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`
 
 test.each([
@@ -133,8 +145,21 @@ test.each([
     code: fastCheckDuplicateTitleCode,
     ruleId: `vitest/no-identical-title`,
   },
-])(`reports $name`, async ({ path, code, ruleId }) => {
-  const ruleIds = await lintFile(path, code)
+  {
+    name: `a call with too many arguments in JavaScript`,
+    path: `index.js`,
+    code: `export const x = Math.abs(1, 2)\n`,
+    ruleId: `unicorn/no-invalid-argument-count`,
+  },
+  {
+    name: `a devDependency imported from published code`,
+    path: `src/index.js`,
+    code: devDependencyImportCode,
+    otherFiles: devDependencyFiles,
+    ruleId: `import/no-extraneous-dependencies`,
+  },
+])(`reports $name`, async ({ path, code, otherFiles, ruleId }) => {
+  const ruleIds = await lintFile(path, code, otherFiles)
 
   expect(ruleIds).toContain(ruleId)
 })
@@ -153,15 +178,40 @@ test.each([`src/index.test.ts.snap`, `src/fixture.test.yaml`])(
   },
 )
 
-test(`doesn't report a test whose only assertions are expectTypeOf calls`, async () => {
-  const typeOnlyTestCode = `import { expectTypeOf, test } from 'vitest'
+test.each([
+  {
+    name: `a test whose only assertions are expectTypeOf calls`,
+    path: `src/index.test.js`,
+    code: `import { expectTypeOf, test } from 'vitest'\n\ntest('types', () => {\n  expectTypeOf(1).toEqualTypeOf(2)\n})\n`,
+    ruleId: `vitest/expect-expect`,
+  },
+  {
+    name: `an expect in a fast-check property test`,
+    path: `src/index.test.js`,
+    code: `import { fc, test } from '@fast-check/vitest'\nimport { expect } from 'vitest'\n\ntest.prop([fc.nat()])('works', n => {\n  expect(n).toBe(n)\n})\n`,
+    ruleId: `vitest/no-standalone-expect`,
+  },
+  {
+    name: `CommonJS in a Markdown code block`,
+    path: `readme.md`,
+    code: `# Title\n\n\`\`\`js\nmodule.exports = {}\n\`\`\`\n`,
+    ruleId: `unicorn/prefer-module`,
+  },
+  {
+    name: `a devDependency imported from a test helper`,
+    path: `src/testing/helpers.js`,
+    code: devDependencyImportCode,
+    otherFiles: devDependencyFiles,
+    ruleId: `import/no-extraneous-dependencies`,
+  },
+  {
+    name: `a call with too many arguments in TypeScript, which TypeScript reports`,
+    path: `index.ts`,
+    code: `export const x = Math.abs(1, 2)\n`,
+    ruleId: `unicorn/no-invalid-argument-count`,
+  },
+])(`doesn't report $name`, async ({ path, code, otherFiles, ruleId }) => {
+  const ruleIds = await lintFile(path, code, otherFiles)
 
-test('types', () => {
-  expectTypeOf(1).toEqualTypeOf(2)
-})
-`
-
-  const ruleIds = await lintFile(`src/index.test.js`, typeOnlyTestCode)
-
-  expect(ruleIds).not.toContain(`vitest/expect-expect`)
+  expect(ruleIds).not.toContain(ruleId)
 })
