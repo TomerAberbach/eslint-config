@@ -4,6 +4,33 @@ import config from './index.ts'
 import { lintFile } from './testing.ts'
 
 const unclosedDivCode = `export const App = () => <div></div>\n`
+const derivedStateCode = `import { useEffect, useState } from 'react'
+
+export const FullName = ({ first, last }) => {
+  const [fullName, setFullName] = useState(\`\`)
+  useEffect(() => {
+    setFullName(\`\${first} \${last}\`)
+  }, [first, last])
+  return <p>{fullName}</p>
+}
+`
+const onlineStatusCode = `import { useEffect, useState } from 'react'
+
+export const OnlineStatus = () => {
+  const [isOnline, setIsOnline] = useState(true)
+  useEffect(() => {
+    const update = () => setIsOnline(navigator.onLine)
+    update()
+    window.addEventListener('online', update)
+    window.addEventListener('offline', update)
+    return () => {
+      window.removeEventListener('online', update)
+      window.removeEventListener('offline', update)
+    }
+  }, [])
+  return <p>{String(isOnline)}</p>
+}
+`
 const itTestCode = `import { expect, it } from 'vitest'\n\nit('works', () => {\n  expect(1).toBe(1)\n})\n`
 
 test.each([
@@ -42,6 +69,18 @@ test.each([
     path: `index.tsx`,
     code: unclosedDivCode,
     ruleId: `react/self-closing-comp`,
+  },
+  {
+    name: `state derived in an effect`,
+    path: `index.jsx`,
+    code: derivedStateCode,
+    ruleId: `react-you-might-not-need-an-effect/no-derived-state`,
+  },
+  {
+    name: `an external store subscribed to in an effect`,
+    path: `index.jsx`,
+    code: onlineStatusCode,
+    ruleId: `react-you-might-not-need-an-effect/no-external-store-subscription`,
   },
   {
     name: `it in a test directory`,

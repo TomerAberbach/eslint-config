@@ -10,6 +10,7 @@ import importPlugin from 'eslint-plugin-import-x'
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y'
 import reactPlugin from 'eslint-plugin-react' // eslint-disable-line depend/ban-dependencies
 import reactHooksPlugin from 'eslint-plugin-react-hooks'
+import reactYouMightNotNeedAnEffectPlugin from 'eslint-plugin-react-you-might-not-need-an-effect'
 import securityPlugin from 'eslint-plugin-security'
 import testingLibraryPlugin from 'eslint-plugin-testing-library'
 import tsDocPlugin from 'eslint-plugin-tsdoc'
@@ -573,6 +574,7 @@ export default defineConfig([
         rules: reactHooksPlugin.rules,
       },
       'jsx-a11y': jsxA11yPlugin,
+      'react-you-might-not-need-an-effect': reactYouMightNotNeedAnEffectPlugin,
     },
     rules: {
       // It's common to need to throw non-Errors in React.
@@ -604,6 +606,8 @@ export default defineConfig([
 
       'react-hooks/rules-of-hooks': ERROR,
       'react-hooks/exhaustive-deps': ERROR,
+
+      ...reactYouMightNotNeedAnEffectPlugin.configs.strict.rules,
 
       'jsx-a11y/alt-text': ERROR,
       'jsx-a11y/anchor-ambiguous-text': ERROR,
