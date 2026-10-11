@@ -656,7 +656,10 @@ export default defineConfig([
   },
 
   {
-    files: [`test/**/*`, `**/*.{test,spec}.*`],
+    files: [
+      `test/**/*`,
+      `**/*.{test,spec}.{js,mjs,cjs,jsx,mjsx,cjsx,ts,mts,cts,tsx,mtsx,ctsx}`,
+    ],
     plugins: {
       vitest: vitestPlugin,
       'testing-library': testingLibraryPlugin,

@@ -1,4 +1,6 @@
+import { ESLint } from 'eslint'
 import { expect, test } from 'vitest'
+import config from './index.ts'
 import { lintFile } from './lint-file.ts'
 
 test.each([
@@ -61,3 +63,17 @@ test.each([
 
   expect(ruleIds).toContain(ruleId)
 })
+
+test.each([`src/index.test.ts.snap`, `src/fixture.test.yaml`])(
+  `doesn't lint the non-JavaScript test file %s`,
+  async path => {
+    const eslint = new ESLint({
+      overrideConfigFile: true,
+      overrideConfig: config,
+    })
+
+    const fileConfig: unknown = await eslint.calculateConfigForFile(path)
+
+    expect(fileConfig).toBeUndefined()
+  },
+)
