@@ -3,3 +3,5 @@ allowBuilds:
 shellEmulator: true
 overrides:
   katex@<0.18.2: ^0.18.2
+minimumReleaseAgeExclude:
+  - '@tomer/prettier-config@5.0.0'

@@ -64,8 +64,8 @@ importers:
         version: 8.71.1(eslint@10.12.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
     devDependencies:
       '@tomer/prettier-config':
-        specifier: ^4.0.1
-        version: 4.0.1(prettier@3.9.10)
+        specifier: ^5.0.0
+        version: 5.0.0(prettier@3.9.10)
       '@types/eslint-plugin-jsx-a11y':
         specifier: ^6.10.1
         version: 6.10.1(jiti@2.7.0)(supports-color@7.2.0)
@@ -674,11 +674,11 @@ packages:
     peerDependencies:
       eslint: ^9.0.0 || ^10.0.0
 
-  '@tomer/prettier-config@4.0.1':
-    resolution: {integrity: sha512-DPVDxsTfoLJJhsdNV6ODQzyVqd0fKtZyu7KWWnApf+Y57fCsw8YasiwUkwltJb16pn1fw4IU5urTvCYaUoZUwQ==}
+  '@tomer/prettier-config@5.0.0':
+    resolution: {integrity: sha512-g023zz4WRU6KopIuKIyi+bXHxirwEObQuZYQuLALPKtDa5ez1omImEgPBH6g631o6uIp79c3hsjwsVYfXK20hg==}
     engines: {node: '>= 22'}
     peerDependencies:
-      prettier: ^3
+      prettier: ^3.7
 
   '@tybys/wasm-util@0.10.4':
     resolution: {integrity: sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A==}
@@ -2337,8 +2337,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-tailwindcss@0.7.4:
-    resolution: {integrity: sha512-UKii4RjY05SNt/WQi6/NcOn/LsT0/ILLXsxygjbRg5/YZelsSu5jTqorYHPDGq4nZy5q5hpCu+XdGZ1xaJEQgw==}
+  prettier-plugin-tailwindcss@0.8.1:
+    resolution: {integrity: sha512-iaFMYqDsE4ffdDkn5qup0j5f2aCEBFZrdrZnvu9QKTlWx/iGPeQ4HHu7b7fCPMxeo9nwQBiOAh2nSypdFYWJkw==}
     engines: {node: '>=20.19'}
     peerDependencies:
       '@ianvs/prettier-plugin-sort-imports': '*'
@@ -3436,10 +3436,10 @@ snapshots:
       estraverse: 5.3.0
       picomatch: 4.0.7
 
-  '@tomer/prettier-config@4.0.1(prettier@3.9.10)':
+  '@tomer/prettier-config@5.0.0(prettier@3.9.10)':
     dependencies:
       prettier: 3.9.10
-      prettier-plugin-tailwindcss: 0.7.4(prettier@3.9.10)
+      prettier-plugin-tailwindcss: 0.8.1(prettier@3.9.10)
     transitivePeerDependencies:
       - '@ianvs/prettier-plugin-sort-imports'
       - '@prettier/plugin-hermes'
@@ -5470,7 +5470,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-tailwindcss@0.7.4(prettier@3.9.10):
+  prettier-plugin-tailwindcss@0.8.1(prettier@3.9.10):
     dependencies:
       prettier: 3.9.10
 
