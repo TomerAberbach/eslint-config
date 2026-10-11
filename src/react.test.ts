@@ -5,11 +5,12 @@ import { expect, test } from 'vitest'
 import { lintFile } from './lint-file.ts'
 
 test(`detects the installed React version`, async () => {
-  // Deprecated as of React 18. The React plugin assumes the latest version when
-  // it fails to detect one
+  // `ReactDOM.render` is deprecated as of React 18. The React plugin assumes
+  // the latest version when it fails to detect one. The unclosed empty element
+  // shows that the React rules ran
   const reactDomRenderCode = `import ReactDOM from 'react-dom'
 
-ReactDOM.render(<div />, document.body)
+ReactDOM.render(<div></div>, document.body)
 `
   const react17Files = {
     'node_modules/react/package.json': JSON.stringify({ name: `react` }),
@@ -18,5 +19,6 @@ ReactDOM.render(<div />, document.body)
 
   const ruleIds = await lintFile(`index.jsx`, reactDomRenderCode, react17Files)
 
+  expect(ruleIds).toContain(`react/self-closing-comp`)
   expect(ruleIds).not.toContain(`react/no-deprecated`)
 })
