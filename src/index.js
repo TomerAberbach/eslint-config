@@ -263,7 +263,7 @@ export default defineConfig([
       'unicorn/no-abusive-eslint-disable': ERROR,
       'unicorn/no-accessor-recursion': ERROR,
       'unicorn/no-anonymous-default-export': ERROR,
-      'unicorn/no-array-for-each': ERROR,
+      'unicorn/no-for-each': ERROR,
       'unicorn/no-await-in-promise-methods': ERROR,
       'unicorn/no-console-spaces': ERROR,
       'unicorn/no-for-loop': ERROR,

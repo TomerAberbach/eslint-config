@@ -31,7 +31,7 @@
   "type": "module",
   "sideEffects": false,
   "engines": {
-    "node": ">= 22"
+    "node": "^22.22.2 || >= 24.15.0"
   },
   "exports": {
     ".": "./src/index.js",
@@ -52,7 +52,7 @@
     "@stylistic/eslint-plugin": "^5.10.0",
     "@vitest/eslint-plugin": "^1.6.27",
     "eslint-config-flat-gitignore": "^2.4.0",
-    "eslint-plugin-command": "^3.5.3",
+    "eslint-plugin-command": "^4.0.0",
     "eslint-plugin-depend": "^1.5.0",
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
@@ -61,12 +61,12 @@
     "eslint-plugin-security": "^4.2.0",
     "eslint-plugin-testing-library": "^7.16.2",
     "eslint-plugin-tsdoc": "^0.5.4",
-    "eslint-plugin-unicorn": "^65.0.1",
+    "eslint-plugin-unicorn": "^77.0.0",
     "globals": "^17.13.0",
     "typescript-eslint": "^8.71.1"
   },
   "peerDependencies": {
-    "eslint": "^10",
+    "eslint": "^10.4",
     "typescript": "^6"
   },
   "devDependencies": {
