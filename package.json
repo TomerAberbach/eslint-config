@@ -16,7 +16,10 @@
     "config"
   ],
   "homepage": "https://github.com/TomerAberbach/eslint-config",
-  "repository": "TomerAberbach/eslint-config",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomerAberbach/eslint-config.git"
+  },
   "bugs": {
     "url": "https://github.com/TomerAberbach/eslint-config/issues"
   },
@@ -30,7 +33,7 @@
   "type": "module",
   "sideEffects": false,
   "engines": {
-    "node": "^22.22.2 || >= 24.15.0"
+    "node": "^22.22.2 || >=24.15.0"
   },
   "exports": {
     ".": "./src/index.js",
