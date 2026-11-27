@@ -11,6 +11,6 @@ export default defineConfig([
   },
   {
     entry: `src/index.ts`,
-    dts: { emitDtsOnly: true },
+    dts: { dtsOnly: true },
   },
 ])
